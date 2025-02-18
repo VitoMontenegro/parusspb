@@ -277,6 +277,11 @@ details .big-title {
 }
 .text_link_underline a {
 	text-decoration: underline;
+	color: #52A6B2;
+}
+.text_link_underline a:hover {
+	text-decoration: none;
+	color: #52A6B2;
 }
 #popup iframe {
 	width: 100%;
@@ -529,4 +534,7 @@ details .big-title {
 }
 .date_btn.active {
 	@apply w-[212px] px-12 py-[18px] bg-[#52a6b2] border-2 border-gray-200 flex-col justify-start items-center gap-2 inline-flex text-white
+}
+.alert {
+	border: 1px solid red;
 }

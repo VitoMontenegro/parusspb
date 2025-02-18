@@ -29,7 +29,7 @@ h2 {
 	@apply text-[26px] leading-[1.2] lg:text-[32px] tracking-tight mt-10 mb-6;
 }
 h3 {
-	@apply text-[18px] mt-0 mb-[14px] leading-[1.2] font-bold;
+	@apply text-[20px] sm:text-[24px] mt-0 mb-[14px] leading-[1.2] font-bold;
 }
 h4 {
 	@apply text-[18px] mt-0 mb-[14px] leading-[1.2] font-bold;

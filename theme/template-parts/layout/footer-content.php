@@ -231,7 +231,7 @@ $options = get_fields( 'option');
 	<button class="popup-close absolute top-4 right-4 text-white text-2xl">X</button>
 </div>
 <div data-popup="popup-success-rev" class="popup hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 z-50 flex items-center justify-center">
-	<div class="send-letter bg-white px-6 lg:px-8 py-5 lg:py-7 w-full md:w-[290px] min-w-[290px] lg:w-[325px] lg:min-w-[325px] rounded-2xl">
+	<div class="send-letter bg-white px-6 lg:px-8 py-5 lg:py-7 w-full md:w-[290px] min-w-[290px] lg:w-[325px] lg:min-w-[325px] rounded-2xl relative">
 		<div class="flex flex-col gap-[18px]">
 			<div class="title text-lg font-bold">Спасибо за отзыв!</div>
 			<div class="text-[#373F41] text-[14px]">Мы получили ваш отзыв
@@ -262,7 +262,11 @@ $options = get_fields( 'option');
 				</span>
 			</a>
 		</div>
+		<button class="popup-close absolute top-4 right-4">
+			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+				<path d="M11 19L15 15M15 15L18.6667 11.3333M15 15L11 11M15 15L19 19M28 15C28 22.1797 22.1797 28 15 28C7.8203 28 2 22.1797 2 15C2 7.8203 7.8203 2 15 2C22.1797 2 28 7.8203 28 15Z" stroke="#6B7280" stroke-width="2.67" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</button>
 	</div>
-	<button class="popup-close absolute top-4 right-4 text-white text-2xl">X</button>
 </div>
 

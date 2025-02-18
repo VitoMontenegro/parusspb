@@ -2,6 +2,27 @@
 
 
 
+function getHourDeclension(int $number): string {
+	$mod100 = $number % 100;
+	$mod10 = $number % 10;
+
+	if ($mod100 >= 11 && $mod100 <= 14) {
+		return 'часов';
+	}
+
+	if ($mod10 == 1) {
+		return 'час';
+	}
+
+	if ($mod10 >= 2 && $mod10 <= 4) {
+		return 'часа';
+	}
+
+	return 'часов';
+}
+
+
+
 
 //Шорткод %%duration%% - вывода минимальной цены категории в метатегах
 function get_duration() {
@@ -26,8 +47,6 @@ function get_duration() {
 			)
 		);
 
-		$items_prices = [];
-
 		foreach ($items as $item) {
 			$m = 0;
 			$fields = get_fields($item->ID);
@@ -43,7 +62,7 @@ function get_duration() {
 
 		$min_duration = !empty($items_duration) ? min($items_duration) : 'уточняйте';
 		wp_reset_postdata();
-		return $min_duration;
+		return $min_duration . ' ' . getHourDeclension($min_duration);
 
 
 	} elseif(is_single()) {
@@ -53,7 +72,8 @@ function get_duration() {
 
 			if (!empty($fields['duration'])) {
 				if (preg_match('/\d+([.,]\d+)?/', $fields['duration'], $matches)) {
-					return str_replace(',', '.', $matches[0]); // Заменяем запятую на точку
+					$min_duration =  str_replace(',', '.', $matches[0]) ; // Заменяем запятую на точку
+					return $min_duration . ' ' . getHourDeclension($min_duration);
 				}
 			}
 

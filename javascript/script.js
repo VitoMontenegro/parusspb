@@ -695,6 +695,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		// Обновляем URL в адресной строке без перезагрузки страницы
 		window.history.replaceState({}, document.title, url);
 	}
+	function isValidPhone(phone) {
+		if (!phone.trim()) {
+			return false; // Возвращаем false, если строка пустая или состоит только из пробелов
+		}
+		const phoneRegex =
+			/^(\+7|8)?[\s-]?(\(?\d{3}\)?)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/;
+		return phoneRegex.test(phone.trim());
+	}
+
 
 	//форма отзывов
 	const formContainer = document.querySelector('.reviews_form');
@@ -745,69 +754,116 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		// Закрыть все списки
 		function closeAllSuggestions() {
-			document
-				.querySelectorAll('.reviews_form placeholder ul')
-				.forEach((suggestionsBox) => {
-					suggestionsBox.classList.add('hidden');
-				});
+			document.querySelectorAll('.reviews_form placeholder ul').forEach((suggestionsBox) => {
+				suggestionsBox.classList.add('hidden');
+			});
 		}
 
 		// Инициализация логики для каждого поля и списка
-		document
-			.querySelectorAll('.list-input input[name]')
-			.forEach((inputField) => {
-				const suggestionsBox = inputField.nextElementSibling; // Предполагаем, что ul идет сразу после input
+		/*document.querySelectorAll('.list-input input[name]').forEach((inputField) => {
+			const suggestionsBox = inputField.nextElementSibling; // Предполагаем, что ul идет сразу после input
 
-				if (!suggestionsBox) return;
+			if (!suggestionsBox) return;
 
-				inputField.addEventListener('focus', () => {
-					closeAllSuggestions(); // Закрываем другие списки
-					showAllSuggestions(inputField, suggestionsBox);
-				});
-
-				inputField.addEventListener('input', () =>
-					showSuggestions(inputField, suggestionsBox)
-				);
-
-				inputField.addEventListener('blur', () => {
-					setTimeout(
-						() => suggestionsBox.classList.add('hidden'),
-						200
-					); // Даем время на обработку клика по элементу списка
-				});
-
-				suggestionsBox
-					.querySelectorAll('.data-item')
-					.forEach((item) => {
-						item.addEventListener('click', () => {
-							//inputField.value = item.getAttribute('data-name')
-							console.log(
-								'item>>',
-								inputField.getAttribute('id')
-							);
-							inputField.value = item.textContent;
-							if (
-								inputField.getAttribute('id') === 'inputField1'
-							) {
-								document.querySelector(
-									'input[name="excurs"]'
-								).value = item.getAttribute('data-name');
-							}
-
-							inputField.value = item.textContent;
-							suggestionsBox.classList.add('hidden');
-						});
-					});
+			inputField.addEventListener('focus', () => {
+				closeAllSuggestions(); // Закрываем другие списки
+				showAllSuggestions(inputField, suggestionsBox);
 			});
 
+			inputField.addEventListener('input', () =>
+				showSuggestions(inputField, suggestionsBox)
+			);
+
+			inputField.addEventListener('blur', () => {
+				setTimeout(() => {
+					suggestionsBox.classList.add('hidden')
+				}, 200);
+			});
+
+			suggestionsBox.querySelectorAll('.data-item').forEach((item) => {
+				item.addEventListener('click', () => {
+					inputField.value = item.textContent;
+
+					if (inputField.getAttribute('id') === 'inputField1') {
+						document.querySelector('input[name="excurs"]').value = item.getAttribute('data-name');
+					}
+
+					suggestionsBox.classList.add('hidden');
+
+					// Убираем фокус с input
+					inputField.blur();
+					document.body.focus(); // Переводим фокус на body
+
+					// Ждём завершения скрытия списка, затем возвращаем фокус
+					setTimeout(() => {
+						inputField.focus();
+						inputField.setSelectionRange(inputField.value.length, inputField.value.length); // Ставим курсор в конец
+					}, 250); // Чуть больше задержки скрытия списка
+				});
+			});
+		});*/
+
+		document.querySelectorAll(".list-input input[name]").forEach((inputField) => {
+			const suggestionsBox = inputField.nextElementSibling; // ul идет сразу после input
+
+			if (!suggestionsBox) return;
+
+			// Показать список
+			const showSuggestions = () => {
+				suggestionsBox.classList.remove("hidden");
+			};
+
+			// Скрыть список
+			const hideSuggestions = () => {
+				suggestionsBox.classList.add("hidden");
+			};
+
+			// Открытие списка при фокусе на input
+			inputField.addEventListener("focus", showSuggestions);
+
+			// При вводе текста — фильтрация и обновление видимости
+			inputField.addEventListener("input", () => {
+				const searchValue = inputField.value.toLowerCase();
+				suggestionsBox.querySelectorAll(".data-item").forEach((item) => {
+					const itemText = item.textContent.toLowerCase();
+					item.style.display = itemText.includes(searchValue) ? "block" : "none";
+				});
+				showSuggestions(); // Обновление видимости
+			});
+
+			// Обработчик клика по элементу списка
+			suggestionsBox.addEventListener("mousedown", (event) => {
+				const item = event.target.closest(".data-item");
+				if (!item) return;
+
+				inputField.value = item.textContent;
+
+				// Установка значения в скрытое поле
+				document.querySelector('input[name="excurs"]').value = item.getAttribute("data-name");
+
+				hideSuggestions(); // Скрытие списка
+			});
+
+			// Закрытие списка при клике вне поля ввода или списка
+			document.addEventListener("click", (event) => {
+				if (!inputField.contains(event.target) && !suggestionsBox.contains(event.target)) {
+					hideSuggestions(); // Скрываем список
+				}
+			});
+		});
+
+
+
+
+
 		// Закрытие списка при клике вне поля ввода и списка
-		document.addEventListener('mousedown', (event) => {
+		/*document.addEventListener('mousedown', (event) => {
 			const isInput = event.target.tagName === 'INPUT';
 			const isDataItem = event.target.classList.contains('data-item');
 			if (!isInput && !isDataItem) {
 				closeAllSuggestions();
 			}
-		});
+		});*/
 
 		const photoInput = document.getElementById('photo-input');
 		const previewContainer = document.getElementById('preview-container');
@@ -851,6 +907,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		formContainer.addEventListener('submit', function (e) {
 			e.preventDefault();
 
+			let button = this.querySelector('.send-btn');
+			let text = button.querySelector('.btn-text');
+			let loader = button.querySelector('.loader');
+
+
 			const thisForm = e.target;
 			const name = thisForm.querySelector('[name=name]').value;
 			const formData = new FormData(thisForm);
@@ -859,20 +920,39 @@ document.addEventListener('DOMContentLoaded', () => {
 			selectedFiles.forEach((file, index) => {
 				formData.append(`file[${index}]`, file);
 			});
+			const nameField = document.querySelector('.name_field input');
 
 			if (!name) {
-				const nameField = document.querySelector('.name_field input');
 				nameField.classList.add('alert');
 				window.scrollTo({
 					top: document.querySelector('.reviews_form').offsetTop - 50,
 					behavior: 'smooth',
 				});
-				return;
+				return false;
+			} else {
+				nameField.classList.remove('alert');
+				// Показываем прелоадер
+				button.disabled = true;
+				text.classList.add('hidden');
+				loader.classList.remove('hidden');
 			}
 
 			//document.querySelector('.page-loader').style.display = 'block';
 
 			//document.querySelector('.page-loader').style.display = 'block';
+
+			setTimeout(()=> {
+				const popup = document.querySelector(
+					'.popup[data-popup="popup-success-rev"]'
+				);
+				if (popup) {
+					popup.classList.remove('hidden');
+				}
+				// Восстанавливаем кнопку
+				button.disabled = false;
+				text.classList.remove('hidden');
+				loader.classList.add('hidden');
+			},2500);
 
 			fetch('/wp-json/custom/v1/reviews-form', {
 				method: 'POST',
@@ -881,8 +961,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					//'X-WP-Nonce': wpApiSettings.nonce // Если требуется авторизация
 				},
 				body: formData,
-			})
-				.then((response) => {
+			}).then((response) => {
 					if (!response.ok) {
 						return response.json().then((err) => {
 							throw new Error(
@@ -891,23 +970,21 @@ document.addEventListener('DOMContentLoaded', () => {
 						});
 					}
 					return response.json();
-				})
-				.then((data) => {
-					console.log('Ответ сервера:', data);
-					const popup = document.querySelector(
-						'.popup[data-popup="popup-success-rev"]'
-					);
-					if (popup) {
-						popup.classList.remove('hidden');
-					}
-				})
-				.catch((error) => {
-					console.error('Ошибка:', error);
-					alert(error.message || 'Что-то пошло не так');
-				})
-				.finally(() => {
-					//document.querySelector('.page-loader').style.display = 'none';
-				});
+				}).then((data) => {
+				console.log('Ответ сервера:', data);
+			}).catch((error) => {
+				console.error('Ошибка:', error);
+				//alert(error.message || 'Что-то пошло не так');
+			}).finally(() => {
+				thisForm.reset();
+
+				// Очистка массива загруженных файлов
+				selectedFiles.length = 0;
+
+				// Очистка контейнера превью
+				previewContainer.innerHTML = '';
+				//document.querySelector('.page-loader').style.display = 'none';
+			});
 		});
 	}
 

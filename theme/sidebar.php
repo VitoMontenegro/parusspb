@@ -36,23 +36,37 @@ $queryParams = $_SERVER['QUERY_STRING'] ? '?' .$_SERVER['QUERY_STRING'] : '';
 		<div class="flex gap-1 flex-col w-full pb-[20px] mb-[24px] border-b-2 border-[#E5E7EB]">
 			<div class="flex gap-2 flex-wrap radio-group" id="cat_sidebar">
 				<?php foreach($cats as $cat): ?>
-					<div class="flex items-center">
-						<?php if($cat['current']): ?>
-							<span  class="rounded-[6px] bg-[#52a6b2] text-white transition px-[13px] h-8 flex items-center">
-								<?php echo $cat['name'] ?>
-							</span>
-						<?php else: ?>
-							<a href="<?php echo $cat['link'] . $queryParams; ?>" class="rounded-[6px] bg-[#E6E9EC] hover:bg-[#52a6b2] hover:text-white transition px-[13px] h-8 flex items-center">
-								<?php echo $cat['name'] ?>
-							</a>
-						<?php endif; ?>
-					</div>
+					<?php
+						$current_term = get_queried_object();
+						$fieldsCat = get_fields("term_".$cat['id']);
+					?>
+					<?php if( !isset($fieldsCat['exclude']) || empty($fieldsCat['exclude'] || !$fieldsCat['exclude'])): ?>
+						<div class="flex items-center">
+							<?php if($cat['current']): ?>
+								<span  class="rounded-[6px] bg-[#52a6b2] text-white transition px-[13px] h-8 flex items-center">
+									<?php echo $cat['name'] ?>
+								</span>
+							<?php else: ?>
+								<a href="<?php echo $cat['link'] . $queryParams; ?>" class="rounded-[6px] bg-[#E6E9EC] hover:bg-[#52a6b2] hover:text-white transition px-[13px] h-8 flex items-center">
+									<?php echo $cat['name'] ?>
+								</a>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
 				<?php endforeach; ?>
 			</div>
 		</div>
-		<form id="filter-form" class="mb-0 excursions-container   pb-12 sm:pb-0" data-category-id="<?php echo $current_category->term_id; ?>">
-			<input type="hidden" id="category_id" value="<?php echo $current_category->term_id; ?>">
+		<form id="filter-form" class="mb-0 excursions-container pb-12 sm:pb-0" data-category-id="<?php echo $current_category->term_id; ?>">
+			<div class="pb-[20px] mb-[24px] border-b-2 border-[#E5E7EB]">
+				<input type="hidden" id="category_id" value="<?php echo $current_category->term_id; ?>">
 
+				<div id="calendar" class="w-full"></div>
+
+				<div class="button-group flex w-full gap-3 font-medium">
+					<button type="button" class="close-filter-btn button-cancel h-10 w-full flex items-center justify-center border border-neutral-300 rounded-[6px]" id="cancelBtn">Отмена</button>
+					<button type="button" class="button-ok h-10 w-full flex items-center justify-center border border-[#52A6B2] bg-[#52A6B2] hover:bg-[#44909B] rounded-[6px] text-white" id="okBtn">Ок</button>
+				</div>
+			</div>
 
 			<!--duration-->
 			<div class="flex gap-3 flex-col w-full pb-[20px] mb-[24px] border-b-2 border-[#E5E7EB]">
@@ -100,7 +114,7 @@ $queryParams = $_SERVER['QUERY_STRING'] ? '?' .$_SERVER['QUERY_STRING'] : '';
 			</div>
 
 			<!--price-->
-			<div class="flex gap-3 flex-col w-full pb-[24px] mb-[24px] border-b-2 border-[#E5E7EB]">
+			<div class="flex gap-3 flex-col w-full">
 				<div class="font-bold flex items-center gap-[10px]">
 					<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
 						<path d="M2 4.55556V13.4444C2 15.4081 5.18375 17 9.11111 17C13.0385 17 16.2222 15.4081 16.2222 13.4444V4.55556M2 4.55556C2 6.51923 5.18375 8.11111 9.11111 8.11111C13.0385 8.11111 16.2222 6.51923 16.2222 4.55556M2 4.55556C2 2.59188 5.18375 1 9.11111 1C13.0385 1 16.2222 2.59188 16.2222 4.55556M16.2222 9C16.2222 10.9637 13.0385 12.5556 9.11111 12.5556C5.18375 12.5556 2 10.9637 2 9" stroke="#111827" stroke-width="2"/>
@@ -135,15 +149,10 @@ $queryParams = $_SERVER['QUERY_STRING'] ? '?' .$_SERVER['QUERY_STRING'] : '';
 					</label>
 				</div>
 			</div>
+
 			<!--dateForm-->
 			<input type="hidden" name="dateForm" id="dateForm">
 		</form>
-		<div id="calendar" class="w-full"></div>
-
-		<div class="button-group flex w-full gap-3 font-medium">
-			<button type="button" class="close-filter-btn button-cancel h-10 w-full flex items-center justify-center border border-neutral-300 rounded-[6px]" id="cancelBtn">Отмена</button>
-			<button type="button" class="button-ok h-10 w-full flex items-center justify-center border border-[#52A6B2] bg-[#52A6B2] hover:bg-[#44909B] rounded-[6px] text-white" id="okBtn">Ок</button>
-		</div>
 	</div>
 
 	<div class="w-full px-[42px] py-[15px] bg-white border-2 border-[#d6bd7f] justify-center items-center gap-3.5 flex mt-6">

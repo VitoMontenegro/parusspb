@@ -125,7 +125,7 @@ wp_reset_postdata();
                                         <div class="flex flex-col gap-[18px] items-center justify-center">
                                             <div class="flex flex-col w-full">
 
-                                                <label class="placeholder relative mb-[18px]">
+                                                <label class="placeholder relative mb-[18px] name_field">
                                                     <input
                                                             class="bg-[#F2F1FA]  rounded-[6px] w-full h-10 px-4 focus:outline-none placeholder-transparent"
                                                             name="name"
@@ -148,7 +148,6 @@ wp_reset_postdata();
 
 
                                                 <label class="placeholder list-input relative mb-[18px] relative">
-                                                    <input type="hidden" name="excurs">
                                                     <svg class="absolute right-[20px] top-[14px]"  width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <rect width="12" height="1" rx="0.5" fill="#D6BD7F"/>
                                                         <rect y="4" width="12" height="1" rx="0.5" fill="#D6BD7F"/>
@@ -167,6 +166,7 @@ wp_reset_postdata();
                                                             <li class="data-item px-4 py-2 hover:bg-gray-100 cursor-pointer" data-name="<?php echo $key ?>"><?php echo $value ?></li>
                                                         <?php endforeach ?>
                                                     </ul>
+													<input type="hidden" name="excurs">
                                                 </label>
 
                                                 <label class="placeholder list-input relative mb-[18px]">
@@ -193,13 +193,13 @@ wp_reset_postdata();
                                                 <textarea class="bg-[#F2F1FA] rounded-[12px] w-full px-4 py-[11px] focus:outline-none h-[220px] mb-[18px]" name="message" id="" placeholder="Напишите всё, что думаете об экскурсии"></textarea>
 
 
-                                                <div id="rev_upload" class="rounded-xl border border-dashed border-[#D6BD7F] px-[11px] py-[14px] bg-[#F2F1FA]">
-                                                    <label class="relative justify-center items-center flex flex-col">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none">
+                                                <div id="rev_upload" class="rounded-xl border border-dashed border-[#D6BD7F] px-[11px] py-[14px] bg-[#F2F1FA] cursor-pointer">
+                                                    <label class="relative justify-center items-center flex flex-col cursor-pointer">
+                                                        <svg class="pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none">
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M6.25 8.375C4.45507 8.375 3 9.83008 3 11.625V24.625C3 26.4199 4.45507 27.875 6.25 27.875H25.75C27.5449 27.875 29 26.4199 29 24.625V11.625C29 9.83007 27.5449 8.375 25.75 8.375H23.1731C22.7421 8.375 22.3288 8.2038 22.024 7.89905L20.2019 6.0769C19.5924 5.46741 18.7658 5.125 17.9038 5.125H14.0962C13.2342 5.125 12.4076 5.46741 11.7981 6.0769L9.97595 7.89905C9.6712 8.2038 9.25788 8.375 8.8269 8.375H6.25ZM16 23C18.6924 23 20.875 20.8174 20.875 18.125C20.875 15.4326 18.6924 13.25 16 13.25C13.3076 13.25 11.125 15.4326 11.125 18.125C11.125 20.8174 13.3076 23 16 23Z" fill="#D6BD7F"/>
                                                         </svg>
                                                         <span id="popup-input-file" class="popup-input-content popup-input-file-content">
-                                                            <input type="file" id="photo-input"  multiple="multiple"  class="popup-input-file opacity-0 photo absolute top-0 bottom-0 left-0 right-0" name="file[]" accept="image/*">
+                                                            <input type="file" id="photo-input"  multiple="multiple"  class="popup-input-file opacity-0 photo absolute top-0 bottom-0 left-0 right-0 cursor-pointer" name="file[]" accept="image/*">
                                                             <span class="popup-input-file-btn text-[11px] text-center flex items-center justify-center">Перетащите или загрузите фото <br>формат:  jpg, jpeg, png, webp</span>
                                                         </span>
                                                     </label>
@@ -209,8 +209,14 @@ wp_reset_postdata();
                                             </div>
                                         </div>
 
-                                        <button class="inline-flex h-11 items-center justify-center font-bold   px-7 sm:px-10 rounded-md bg-[#52A6B2] text-white text-[12px] lg:text-sm mb-[18px] mt-[18px]">
-                                            <span class="text-center text-white text-[12px] lg:text-sm font-bold leading-tight">Отправить отзыв</span>
+                                        <button class="send-btn relative inline-flex h-11 items-center justify-center font-bold   px-7 sm:px-10 rounded-md bg-[#52A6B2] text-white text-[12px] lg:text-sm mb-[18px] mt-[18px] w-full sm:w-[205px]">
+                                            <span class="btn-text text-center text-white text-[12px] lg:text-sm font-bold leading-tight">Отправить отзыв</span>
+											<span class="loader hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+												<svg class="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+													<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+												</svg>
+											</span>
                                         </button>
                                         <label class=cursor-pointer">
                                                         <span class="flex gap-2 items-center">

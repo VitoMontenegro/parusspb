@@ -104,36 +104,32 @@ $options = get_fields( 'option');
 					<span class="text-[16px] font-bold hidden lg:block"><?php echo $options['phone'];?></span>
 				</a>
 				<a target="_blank" href=https://api.whatsapp.com/send?phone=<?php echo preg_replace('/[^0-9]/', '', $options['watsapp']);  ?>&text=Здравствуйте.+Я+обращаюсь+с+сайта+groupspb.ru" class="watsapp hidden md:flex gap-1 items-center min-h-7 me-2 sm:me-3">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.37994 0 0 5.37994 0 12C0 14.6261 0.838906 17.0517 2.27964 19.0395L0.784195 23.5076L5.39818 22.0304C7.29483 23.2888 9.55623 24.0182 12 24.0182C18.6201 24.0182 24 18.6383 24 12.0182C24 5.39818 18.6201 0 12 0ZM18.9848 16.9422C18.693 17.7629 17.5441 18.4377 16.6322 18.6383C16.0122 18.766 15.1915 18.8754 12.4195 17.7264C9.31915 16.4498 5.0152 11.8723 5.0152 8.82675C5.0152 7.2766 5.90881 5.47112 7.4772 5.47112C8.22492 5.47112 8.38906 5.47112 8.64438 6.07295C8.93617 6.76596 9.64742 8.49848 9.72036 8.66261C10.0669 9.3921 9.37386 9.81155 8.86322 10.4316C8.69909 10.614 8.51672 10.8328 8.71733 11.1793C8.91793 11.5258 9.62918 12.6748 10.6687 13.6049C12 14.7903 13.0942 15.1733 13.4772 15.3374C13.769 15.465 14.1155 15.4286 14.3161 15.2097C14.5897 14.9179 14.9179 14.4438 15.2462 13.9696C15.4833 13.6231 15.7933 13.5866 16.1033 13.7143C16.3222 13.7872 19.0395 15.0638 19.1672 15.2644C19.2584 15.4103 19.2584 16.1033 18.9666 16.924" fill="#D6BD7F"/>
-					</svg>
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/whatsapp.svg" alt="" class="object-contain w-6 h-6">
 				</a>
 				<a target="_blank" href="tg://resolve?domain=<?php echo $options['telegram'];  ?>" class=" me-2 sm:me-3">
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path fill-rule="evenodd" clip-rule="evenodd" d="M4.99696 11.8906L13.076 8.55319C13.8784 8.20669 16.5775 7.09422 16.5775 7.09422C16.5775 7.09422 17.8176 6.60182 17.7264 7.78723C17.69 8.27964 17.4164 9.97568 17.1429 11.8176L16.2675 17.2705C16.2675 17.2705 16.1945 18.0729 15.6109 18.2006C15.0274 18.3465 14.0426 17.7082 13.8784 17.5805C13.7325 17.4711 11.2705 15.921 10.3769 15.155C10.1398 14.9544 9.84802 14.535 10.4134 14.0426C11.6535 12.8936 13.1489 11.4711 14.0608 10.5775C14.4802 10.1581 14.8997 9.19149 13.1672 10.3769L8.27964 13.6778C8.27964 13.6778 7.73252 14.0243 6.69301 13.7143C5.6535 13.4043 4.43161 12.9848 4.43161 12.9848C4.43161 12.9848 3.59271 12.4559 5.0152 11.9088L4.99696 11.8906ZM24 12C24 5.37994 18.6201 0 12 0C5.37994 0 0 5.37994 0 12C0 18.6201 5.37994 24 12 24C18.6201 24 24 18.6201 24 12Z" fill="#D6BD7F"/>
-					</svg>
+
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/telegram.svg" alt="" class="object-contain w-6 h-6">
 				</a>
 				<a href="tel:<?php echo  preg_replace('/[^0-9+]/', '', $options['second_phone']);  ?>" class="sm:me-5">
                     <span class="text-[16px] font-bold hidden xl:block"><?php echo $options['second_phone'];?></span>
 				</a>
 				<div class="flex gap-1 md:gap-5 items-center">
 					<div class="hidden lg:flex gap-2 items-center">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<circle cx="12" cy="12" r="12" fill="#D6BD7F"/>
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M7.69849 6.69848C9.96313 4.43384 13.6348 4.43384 15.8995 6.69848C18.1641 8.96313 18.1641 12.6348 15.8995 14.8995L11.799 19L7.69849 14.8995C5.43384 12.6348 5.43384 8.96313 7.69849 6.69848ZM11.799 12.4558C12.714 12.4558 13.4558 11.714 13.4558 10.799C13.4558 9.88393 12.714 9.14214 11.799 9.14214C10.8839 9.14214 10.1421 9.88393 10.1421 10.799C10.1421 11.714 10.8839 12.4558 11.799 12.4558Z" fill="white"/>
-						</svg>
+						<div class="w-[25px] h-[25px]">
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<circle cx="12" cy="12" r="12" fill="#D6BD7F"/>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M7.69849 6.69848C9.96313 4.43384 13.6348 4.43384 15.8995 6.69848C18.1641 8.96313 18.1641 12.6348 15.8995 14.8995L11.799 19L7.69849 14.8995C5.43384 12.6348 5.43384 8.96313 7.69849 6.69848ZM11.799 12.4558C12.714 12.4558 13.4558 11.714 13.4558 10.799C13.4558 9.88393 12.714 9.14214 11.799 9.14214C10.8839 9.14214 10.1421 9.88393 10.1421 10.799C10.1421 11.714 10.8839 12.4558 11.799 12.4558Z" fill="white"/>
+							</svg>
+						</div>
 						<span class="text-[14px] leading-[16px]"><?php echo $options['address_head'];?></span>
 					</div>
 
-					<a href="<?php echo esc_url(get_permalink(10828)); ?>" class="ms-2 ms-0  relative flex items-center w-6 h-6 lg:me-0.5 group" id="product-count">
-						<svg class="block group-[:hover]:hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-							<path d="M15.449 4C13.9552 4 12.5214 4.69543 11.5856 5.79438C10.6497 4.69543 9.21594 4 7.72205 4C5.0777 4 3 6.0777 3 8.72205C3 11.9674 5.91909 14.6117 10.3406 18.6298L11.5856 19.7545L12.8305 18.6212C17.252 14.6117 20.1711 11.9674 20.1711 8.72205C20.1711 6.0777 18.0934 4 15.449 4ZM11.6714 17.3505L11.5856 17.4364L11.4997 17.3505C7.41297 13.6502 4.71711 11.2033 4.71711 8.72205C4.71711 7.00494 6.00494 5.71711 7.72205 5.71711C9.04423 5.71711 10.3321 6.56708 10.7871 7.7433H12.3926C12.839 6.56708 14.1269 5.71711 15.449 5.71711C17.1662 5.71711 18.454 7.00494 18.454 8.72205C18.454 11.2033 15.7581 13.6502 11.6714 17.3505Z" fill="#373F41"></path>
-						</svg>
-						<svg class="hidden group-[:hover]:block" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-							<path d="M15.449 4C13.9552 4 12.5214 4.69543 11.5856 5.79438C10.6497 4.69543 9.21594 4 7.72205 4C5.0777 4 3 6.0777 3 8.72205C3 11.9674 5.91909 14.6117 10.3406 18.6298L11.5856 19.7545L12.8305 18.6212C17.252 14.6117 20.1711 11.9674 20.1711 8.72205C20.1711 6.0777 18.0934 4 15.449 4ZM11.6714 17.3505L11.5856 17.4364L11.4997 17.3505C7.41297 13.6502 4.71711 11.2033 4.71711 8.72205C4.71711 7.00494 6.00494 5.71711 7.72205 5.71711C9.04423 5.71711 10.3321 6.56708 10.7871 7.7433H12.3926C12.839 6.56708 14.1269 5.71711 15.449 5.71711C17.1662 5.71711 18.454 7.00494 18.454 8.72205C18.454 11.2033 15.7581 13.6502 11.6714 17.3505Z" fill="#52A6B2"></path>
-						</svg>
-						<div class="left-[13px] top-[5px] absolute flex text-center justify-center text-white font-bold bg-[#373F41] group-[:hover]:bg-[#52A6B2] rounded-full w-[12px] h-[12px] border-2 border-white">
-							<span class="text-[6px] w-full flex items-center justify-center bold tracking-[-0.2px]">0</span>
+					<a href="<?php echo esc_url(get_permalink(10828)); ?>" class="ms-2 ms-0  relative flex items-center w-8 h-8 lg:me-0.5 group" id="product-count">
+
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/heart.svg" alt="" class="object-cover block group-[:hover]:hidden w-full h-full">
+						<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/heart-curent.svg" alt="" class="object-cover hidden group-[:hover]:block w-full h-full">
+						<div class="left-[17px] top-[8px] absolute flex text-center justify-center text-white font-bold bg-[#373F41] group-[:hover]:bg-[#52A6B2] rounded-full w-[18px] h-[18px] border-2 border-white">
+							<span class="text-[9px] w-full flex items-center justify-center bold tracking-[-0.2px]">0</span>
 						</div>
 					</a>
 				</div>

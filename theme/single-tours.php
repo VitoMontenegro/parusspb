@@ -1046,11 +1046,23 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 											<div class="mb-3 text-[#111827] h-[118px] overflow-y-auto rev-text pe-4"><?php the_content(); ?></div>
 
 											<div class="mt-4 font-bold text-[#52A6B2]">
-												<?php if(isset($fieldsRev['excursion']) && $fieldsRev['excursion']) : ?>
+												<?php if(isset($fieldsRev['excursion_obj']) && $fieldsRev['excursion_obj']):  ?>
+													<?php if(get_post_status($fieldsRev['excursion_obj']) === 'publish') :?>
+														<a href="<?php echo esc_url(get_permalink($fieldsRev['excursion_obj'])); ?>">
+															<?php  echo get_the_title($fieldsRev['excursion_obj']);  ?>
+														</a>
+													<?php else: ?>
+														<span>
+													<?php  echo get_the_title($fieldsRev['excursion_obj']);  ?></span>
+													<?php endif; ?>
+
+												<?php elseif(isset($fieldsRev['excursion']) && $fieldsRev['excursion']) : ?>
 													Экскурсия: <?php echo $fieldsRev['excursion']; ?>
 												<?php endif; ?>
 											</div>
-											<div class="text-[#6B7280] mt-1 sm:pb-4">Гид: Богданова Рената Халимовна</div>
+											<?php if(isset($fieldsRev['gid']) && !empty($fieldsRev['gid'])) : ?>
+												<div class="text-[#6B7280] mt-1 sm:pb-4">Гид: <?php echo $fieldsRev['gid']; ?></div>
+											<?php endif; ?>
 										</div>
 									<?php endwhile; ?>
 								</div>

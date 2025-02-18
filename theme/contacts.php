@@ -116,7 +116,7 @@ get_header();
 									</div>
 								</div>
 								<div class="grow shrink basis-0 flex-col justify-start items-start flex w-full">
-									
+
 										<iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=92802349227" class="w-full h-[200px] sm:h-[384px]"  frameborder="0"></iframe>
 								</div>
 							</div>
@@ -139,12 +139,12 @@ get_header();
 														<?php if(isset($fields['slider']) & !empty($fields['slider'])): ?>
 															<?php foreach($fields['slider'] as $item) : ?>
 																<div class="swiper-slide">
-																	<img  data-fancybox="gallery" src="<?php echo $item ?>" class="h-[180px] rounded object-cover w-full cursor-pointer" src="<?php echo $item; ?>" />
+																	<img data-fancybox="gallery" src="<?php echo $item ?>" class="h-[180px] rounded object-cover w-full cursor-pointer" src="<?php echo $item; ?>" />
 																</div>
 															<?php endforeach; ?>
 														<?php endif; ?>
-														
-														
+
+
 													</div>
 													<div class="self-stretch justify-start items-start gap-8 inline-flex">
 														<div class="grow shrink basis-0 text-gray-500 text-base font-normal font-['Inter']">Реквизиты:<br/><?php echo $options['info'];  ?></div>

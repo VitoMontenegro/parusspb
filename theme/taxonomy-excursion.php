@@ -150,7 +150,7 @@ get_header();
 								<div class="text-[18px] font-medium"><?php echo $fields['int_mesta_subtitle']; ?></div>
 							<?php endif;  ?>
 						</div>
-						<div class="int_mesta items grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-5 sm:mb-8">
+						<div class="int_mesta text_link_underline items grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-5 sm:mb-8">
 							<?php foreach ($fields['selected_items'] as $selected_name) : ?>
 								<?php $items = $options['int_mesta']; ?>
 								<?php foreach ($items as $item) : ?>
@@ -158,7 +158,11 @@ get_header();
 										<div class="item shadows_custom rounded-[6px] overflow-hidden<?php if(++$item_count > 6) echo ' hidden'; ?> ">
 											<img src="<?php echo $item['img']["sizes"]["medium_large"]; ?>"  alt="<?php echo $item['img']["filename"]; ?>" data-src="<?php echo $item['img']["url"]; ?>" class="h-[200px] object-cover w-full">
 											<div class="p-6">
-												<div class="text-[20px] font-bold mb-1"><?php echo $item['name']; ?></div>
+												<?php if(isset($item['link']) && !empty($item['link'])): ?>
+													<a href="<?php echo $item['link'] ;?>" class="text-[20px] font-bold mb-1 !no-underline !text-[#111827]"><?php echo $item['name']; ?></a>
+												<?php else: ?>
+													<div class="text-[20px] font-bold mb-1"><?php echo $item['name']; ?></div>
+												<?php endif; ?>
 												<div class="text-[#6B7280]"><?php echo $item['description']; ?></div>
 											</div>
 										</div>
@@ -364,14 +368,13 @@ get_header();
 
 												<div class="mt-4 font-bold text-[#52A6B2] lines three-lines h-78px sm:h-[58px]">
 													<?php if(isset($fieldsRev['excursion_obj']) && $fieldsRev['excursion_obj']):  ?>
-
 														<?php if(get_post_status($fieldsRev['excursion_obj']) === 'publish') :?>
 															<a href="<?php echo esc_url(get_permalink($fieldsRev['excursion_obj'])); ?>">
 																<?php  echo get_the_title($fieldsRev['excursion_obj']);  ?>
 															</a>
 														<?php else: ?>
 															<span>
-															<?php  echo get_the_title($fieldsRev['excursion_obj']);  ?></span>
+													<?php  echo get_the_title($fieldsRev['excursion_obj']);  ?></span>
 														<?php endif; ?>
 
 													<?php elseif(isset($fieldsRev['excursion']) && $fieldsRev['excursion']) : ?>
