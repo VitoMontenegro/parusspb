@@ -1,0 +1,147 @@
+/**
+ * Custom styles to immediately follow Tailwind’s `base` layer
+ *
+ * “Add things like base typography styles [or] opinionated global resets.”
+ *
+ * — from https://tailwindcss.com/docs/plugins#adding-base-styles
+ */
+
+/**
+ * This uses the background and foreground colors declared in the
+ * `theme.json` file and is applied both to the frontend and in the block
+ * editor.
+*/
+body {
+	@apply text-foreground font-['Inter'] text-[#111827] bg-[#FFFFFF] text-[16px] leading-[1.2] max-w-[100vw] overflow-x-hidden;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply font-bold tracking-tight;
+}
+h1 {
+	@apply text-[29px] font-bold sm:text-[48px] leading-[1.04];
+}
+h2 {
+	@apply text-[26px] leading-[1.2] lg:text-[32px] tracking-tight mt-10 mb-6;
+}
+h3 {
+	@apply text-[18px] mt-0 mb-[14px] leading-[1.2] font-bold;
+}
+h4 {
+	@apply text-[18px] mt-0 mb-[14px] leading-[1.2] font-bold;
+}
+h2.big-title {
+	@apply mt-0 text-[24px] leading-[1.2] font-bold mb-[18px];
+}
+.custom_titles h2 {
+	@apply mb-3 sm:mb-1
+}
+.big-title h2 {
+	@apply text-[32px] mt-0 mb-[24px] leading-[1.2] font-bold;
+}
+.big-title ul {
+	list-style: disc;
+	padding-left: 18px;
+}
+.big-title ul li {
+	margin-bottom: 6px;
+}
+.big-title ul li:last-child {
+	margin-bottom: 0;
+}
+.big-title ol {
+	list-style: auto;
+	padding-left: 18px;
+}
+.big-title ol li {
+	margin-bottom: 6px;
+}
+.big-title ol li:last-child {
+	margin-bottom: 0;
+}
+#sectionDesc {
+	@apply sm:text-[18px] sm:leading-[1.3];
+}
+#sectionDesc h2 {
+	@apply sm:mb-8;
+}
+#sectionDesc p {
+	@apply sm:mb-6;
+}
+.program h4 {
+	@apply sm:text-[18px] mb-5 font-semibold;
+}
+.program h3 {
+	@apply font-semibold mb-5;
+}
+
+.container {
+	@apply !max-w-[1252px] px-5 sm:px-[38px] lg:px-[18px] mx-auto;
+}
+table th,
+table td {
+	@apply py-2 border-2 border-white;
+}
+table th {
+	@apply px-[14px];
+}
+table td {
+	@apply px-[14px] text-center;
+}
+.p-bottom p {
+	margin-bottom: 8px;
+}
+.p-last p:last-child {
+	margin-bottom: 0;
+}
+
+input::placeholder,
+textarea::placeholder {
+	opacity: 1;
+	color: #1a1a18;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1 !important;
+}
+body .fancybox__content {
+	padding: 0;
+}
+.custom-scroll::-webkit-scrollbar {
+	display: none;
+}
+.custom-scroll {
+	-ms-overflow-style: none; /* Для Internet Explorer */
+	scrollbar-width: none; /* Для Firefox */
+}
+
+/* Скрыть полосу прокрутки */
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+#primary {
+	width: 100vw;
+	overflow-x: hidden;
+}
+
+.styles-scrollbar::-webkit-scrollbar {
+	width: 2px;
+}
+
+.styles-scrollbar::-webkit-scrollbar-track {
+	background: #fff;
+}
+
+.styles-scrollbar::-webkit-scrollbar-thumb {
+	background-color: #d6bd7f;
+	border-radius: 0;
+	outline: 1px solid #d6bd7f;
+}

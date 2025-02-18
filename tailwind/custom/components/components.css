@@ -1,0 +1,532 @@
+/**
+ * Custom styles to immediately follow Tailwind’s `components` layer
+ *
+ * “Add more opinionated, complex classes like buttons, form controls, alerts,
+ * etc; the sort of pre-built components you often see in other frameworks that
+ * you might need to override with utility classes.”
+ *
+ * — from https://tailwindcss.com/docs/plugins#adding-components
+ */
+
+/**
+ * Post title styles
+ *
+ * These will be applied to all headings with a `page-title` or `entry-title`
+ * class on the frontend and to the post title in the block editor.
+ *
+ * The supplied styles are meant to match the default `h1` classes from
+ * Tailwind Typography.
+ */
+.page-title,
+.entry-title {
+	@apply max-w-content mx-auto mb-6 text-3xl font-extrabold text-neutral-900;
+}
+
+/**
+ * Layout styles for centered content areas
+ *
+ * If you are controlling the width of your content area with styles applied
+ * to its container, you can delete the following styles whose selectors begin
+ * with `.page-content >` and `.entry-content >`. For more details, please see
+ * the following:
+ *
+ * https://make.wordpress.org/core/2021/06/29/on-layout-and-content-width-in-wordpress-5-8/
+ */
+.flatpickr-calendar.inline {
+	transform: scale(0.9); /* Масштабируем календарь */
+	transform-origin: top left; /* Начальная точка масштабирования */
+	border: none;
+	box-shadow: none;
+}
+.flatpickr-calendar.inline .flatpickr-day {
+	color: #000;
+}
+.flatpickr-calendar.inline .flatpickr-day.flatpickr-disabled {
+	color: #9ca3af;
+}
+.flatpickr-calendar.inline .flatpickr-day.selected,
+.flatpickr-calendar.inline .flatpickr-day.startRange,
+.flatpickr-calendar.inline .flatpickr-day.endRange,
+.flatpickr-calendar.inline .flatpickr-day.selected.inRange,
+.flatpickr-calendar.inline .flatpickr-day.startRange.inRange,
+.flatpickr-calendar.inline .flatpickr-day.endRange.inRange,
+.flatpickr-calendar.inline .flatpickr-day.selected:focus,
+.flatpickr-calendar.inline .flatpickr-day.startRange:focus,
+.flatpickr-calendar.inline .flatpickr-day.endRange:focus,
+.flatpickr-calendar.inline .flatpickr-day.selected:hover,
+.flatpickr-calendar.inline .flatpickr-day.startRange:hover,
+.flatpickr-calendar.inline .flatpickr-day.endRange:hover,
+.flatpickr-calendar.inline .flatpickr-day.selected.prevMonthDay,
+.flatpickr-calendar.inline .flatpickr-day.startRange.prevMonthDay,
+.flatpickr-calendar.inline .flatpickr-day.endRange.prevMonthDay,
+.flatpickr-calendar.inline .flatpickr-day.selected.nextMonthDay,
+.flatpickr-calendar.inline .flatpickr-day.startRange.nextMonthDay,
+.flatpickr-calendar.inline .flatpickr-day.endRange.nextMonthDay {
+	background: #52a6b2;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: #fff;
+	border-color: #52a6b2;
+}
+.flatpickr-calendar.inline .flatpickr-day.inRange {
+	background: #cbe4e8;
+	border-color: #cbe4e8;
+}
+.flatpickr-calendar.inline .flatpickr-day.inRange {
+	box-shadow:
+		-5px 0 0 #cbe4e8,
+		5px 0 0 #cbe4e8;
+}
+.flatpickr-calendar.inline
+	.flatpickr-day.startRange.startRange
+	+ .endRange:not(:nth-child(7n + 1)) {
+	box-shadow: none;
+}
+
+#primary-menu {
+	@apply flex gap-[1px] items-center;
+}
+#primary-menu li a {
+	@apply px-4 py-2 tracking-[.25px];
+}
+#primary-menu li.current_page_item a {
+	@apply text-[#52A6B2];
+}
+#colophon li {
+	@apply my-1;
+}
+#colophon li a {
+	@apply py-0.5 sm:py-1 block;
+}
+/*#sectionCost {
+	background-image: url('images/price_icon.svg');
+	background-position: 50% 98%;
+	background-repeat: no-repeat;
+	background-size: 94%;
+}*/
+
+.page-title,
+.entry-title {
+	@apply mx-auto mb-6 text-3xl font-extrabold text-neutral-900;
+}
+.entry-content > .alignwide {
+	/* Wide width from the `theme.json` file */
+	@apply max-w-wide;
+}
+.entry-content p {
+	@apply leading-[1.3] mb-4;
+}
+.big-title ul {
+	@apply mb-4;
+}
+.big-title ol {
+	@apply mb-4;
+}
+
+.entry-content > .alignfull {
+	@apply max-w-none;
+}
+
+.entry-content > .alignleft {
+	@apply float-left mr-8;
+}
+
+.entry-content > .alignright {
+	@apply float-right ml-8;
+}
+/*custom*/
+
+.short-rev {
+	@apply lines six-lines overflow-y-hidden max-h-[144px];
+}
+.long-rev {
+	@apply overflow-y-scroll max-h-[710px];
+}
+.shadows_custom {
+	box-shadow: 0px 4px 17px rgba(16, 24, 40, 0.08);
+}
+
+.card-title,
+.card-description,
+.lines {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+*:focus-visible {
+	outline: none !important;
+}
+.one-lines {
+	-webkit-line-clamp: 1;
+}
+.two-lines {
+	-webkit-line-clamp: 2;
+}
+.three-lines {
+	-webkit-line-clamp: 3;
+}
+.four-lines {
+	-webkit-line-clamp: 4;
+}
+.five-lines {
+	-webkit-line-clamp: 5;
+}
+.six-lines {
+	-webkit-line-clamp: 6;
+}
+.fifteen-lines {
+	-webkit-line-clamp: 15;
+}
+
+.details,
+.program {
+	transition: 0.3s;
+	overflow: hidden;
+}
+/* Стрелка для закрытого состояния видима, открытая скрыта */
+.program .arrow-icon {
+	position: absolute;
+	right: 30px;
+	top: 36px;
+	pointer-events: none;
+}
+.program:not([open]) .closed-arrow {
+	opacity: 1;
+}
+.program:not([open]) .open-arrow {
+	opacity: 0;
+}
+
+/* Стрелка для открытого состояния видима, закрытая скрыта */
+.program[open] .closed-arrow {
+	opacity: 0;
+}
+.program[open] .open-arrow {
+	opacity: 1;
+}
+
+.details::after {
+	position: absolute;
+	content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNMTUgOEwxMCAxM0w1IDgiIHN0cm9rZT0iIzZCNzI4MCIgc3Ryb2tlLXdpZHRoPSIxLjY3IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+");
+	width: 24px;
+	height: 24px;
+	right: 13px;
+	top: 28px;
+	pointer-events: none;
+	transition: transform 0.3s ease; /* Плавное вращение */
+}
+
+.details summary:after {
+	content: "";
+	position: absolute;
+	height: 1px;
+	width: 90%;
+	background: #e5e7eb;
+	bottom: 0;
+	left: 14px;
+}
+.details[open]::after {
+	transform: rotate(-180deg);
+	top: 28px;
+}
+@media (min-width: 560px) {
+	.sm-shadows_custom {
+		box-shadow: 0px 2px 10px -2px rgba(16, 24, 40, 0.1);
+	}
+	.details::after {
+		right: 30px;
+		top: 15px;
+	}
+	.details[open]::after {
+		transform: rotate(-180deg);
+		top: 13px;
+	}
+	.details summary:after {
+		left: 30px;
+	}
+}
+.details summary {
+	position: relative;
+	border-radius: 0;
+}
+.details[open] summary:after {
+	display: none;
+}
+.details:last-child summary:after {
+	display: none;
+}
+
+.details[open] {
+	background: #fafafa;
+}
+details[open] .big-title {
+	margin-bottom: 14px;
+}
+details .big-title {
+	margin-bottom: 0;
+}
+
+.details__title {
+	list-style: none;
+	transition: 0.3s;
+}
+
+.details__title::-webkit-details-marker {
+	display: none;
+}
+.text_link_underline a {
+	text-decoration: underline;
+}
+#popup iframe {
+	width: 100%;
+	height: 100%;
+	min-height: 80vh;
+	aspect-ratio: 16 / 9;
+	object-fit: contain; /* Чтобы видео не выходило за границы */
+}
+.custom-underline {
+	position: relative;
+}
+.custom-underline:after {
+	content: "";
+	position: absolute;
+	bottom: -2px; /* Расстояние от текста до подчеркивания */
+	left: 0;
+	width: 100%;
+	height: 1.5px;
+	background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="124" height="2" viewBox="0 0 124 2" fill="none"%3E%3Cpath d="M1 1L123 1.00001" stroke="%23999999" stroke-linecap="round" stroke-lined="3%203"/%3E%3C/svg%3E');
+	background-size: cover;
+}
+.page-template-default:not(.home) .entry-content {
+	margin-bottom: 60px;
+}
+
+.page-template-default:not(.home) .entry-content p a {
+	@apply underline text-[#52A6B2];
+}
+.page-template-default:not(.home) .entry-content p a.text-white {
+	@apply text-[#ffffff] no-underline;
+}
+.page-template-default:not(.home) .entry-content p {
+	@apply leading-normal
+}
+.page-template-default:not(.home) .entry-content ul {
+	padding-left: 10px;
+}
+.page-template-default:not(.home) ul li {
+	position: relative;
+	line-height: 1.3;
+}
+.dash-list ul {
+	padding-left: 10px;
+}
+.dash-list ul li {
+	position: relative;
+	line-height: 1.3;
+}
+
+.dash-list ul li::before {
+	content: "-";
+	position: absolute;
+	left: -10px;
+	top: 0;
+}
+.vertical-dash .content > ul {
+	position: relative;
+	padding-left: 32px; /* Отступ для маркера */
+	padding-right: 20px; /* Отступ для вертикальной линии */
+	list-style: none;
+	margin: 0 0 35px 0;
+}
+.vertical-dash .content > ul > li {
+	position: relative;
+	margin-bottom: 30px;
+}
+.vertical-dash .content > ul > li > p {
+	position: relative;
+	margin : 15px 0 15px 15px;
+}
+.vertical-dash .content > ul ul {
+	margin-top: 15px;
+}
+.vertical-dash .content > ul > li:after {
+	content: "";
+	position: absolute;
+	left: -32px;
+	top: 10px;
+	width: 14px;
+	height: 14px;
+	background-color: #d6bd7f;
+	border-radius: 50%;
+	transform: translateY(-50%);
+}
+.vertical-dash .content > ul:before {
+	content: "";
+	position: absolute;
+	left: 6px; /* Расстояние от маркера */
+	top: 0;
+	bottom: 0;
+	width: 2px;
+	background-color: #d6bd7f; /* Цвет вертикальной черты */
+}
+
+.rev-button-next,
+.rev-button-prev,
+.gid-button-next,
+.gid-button-prev,
+.swiper-button-next,
+.swiper-button-prev {
+	position: unset;
+}
+.rev-button-next:after,
+.gid-button-next:after,
+.swiper-button-next:after {
+	content: "";
+	width: 60px;
+	height: 60px;
+	background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTIiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA1MiA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfZF8xMzFfMTA0OTcpIj4KPGNpcmNsZSBjeD0iMzAiIGN5PSIyOCIgcj0iMjIiIHRyYW5zZm9ybT0icm90YXRlKDE4MCAzMCAyOCkiIGZpbGw9IndoaXRlIi8+CjwvZz4KPHBhdGggZD0iTTMxLjU1NTYgMjIuNTU1NkwzNyAyOE0zNyAyOEwzMS41NTU2IDMzLjQ0NDVNMzcgMjhMMjMgMjgiIHN0cm9rZT0iIzExMTgyNyIgc3Ryb2tlLXdpZHRoPSIxLjY3IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPGRlZnM+CjxmaWx0ZXIgaWQ9ImZpbHRlcjBfZF8xMzFfMTA0OTciIHg9IjAiIHk9IjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPgo8ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPgo8ZmVDb2xvck1hdHJpeCBpbj0iU291cmNlQWxwaGEiIHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAxMjcgMCIgcmVzdWx0PSJoYXJkQWxwaGEiLz4KPGZlTW9ycGhvbG9neSByYWRpdXM9IjIiIG9wZXJhdG9yPSJlcm9kZSIgaW49IlNvdXJjZUFscGhhIiByZXN1bHQ9ImVmZmVjdDFfZHJvcFNoYWRvd18xMzFfMTA0OTciLz4KPGZlT2Zmc2V0IGR5PSIyIi8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjUiLz4KPGZlQ29sb3JNYXRyaXggdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMC4wNjI3NDUxIDAgMCAwIDAgMC4wOTQxMTc2IDAgMCAwIDAgMC4xNTY4NjMgMCAwIDAgMC4xIDAiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJlZmZlY3QxX2Ryb3BTaGFkb3dfMTMxXzEwNDk3Ii8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iZWZmZWN0MV9kcm9wU2hhZG93XzEzMV8xMDQ5NyIgcmVzdWx0PSJzaGFwZSIvPgo8L2ZpbHRlcj4KPC9kZWZzPgo8L3N2Zz4K");
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: flex !important;
+	background-position: right;
+}
+
+.rev-button-prev:after,
+.gid-button-prev:after,
+.swiper-button-prev:after {
+	content: "";
+	width: 60px;
+	height: 60px;
+	background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfZF8xMzFfMTA0OTQpIj4KPGNpcmNsZSBjeD0iMzAiIGN5PSIyOCIgcj0iMjIiIGZpbGw9IndoaXRlIi8+CjwvZz4KPHBhdGggZD0iTTI4LjQ0NDQgMzMuNDQ0NEwyMyAyOE0yMyAyOEwyOC40NDQ0IDIyLjU1NTVNMjMgMjhMMzcgMjgiIHN0cm9rZT0iIzExMTgyNyIgc3Ryb2tlLXdpZHRoPSIxLjY3IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPGRlZnM+CjxmaWx0ZXIgaWQ9ImZpbHRlcjBfZF8xMzFfMTA0OTQiIHg9IjAiIHk9IjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9InNSR0IiPgo8ZmVGbG9vZCBmbG9vZC1vcGFjaXR5PSIwIiByZXN1bHQ9IkJhY2tncm91bmRJbWFnZUZpeCIvPgo8ZmVDb2xvck1hdHJpeCBpbj0iU291cmNlQWxwaGEiIHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAxMjcgMCIgcmVzdWx0PSJoYXJkQWxwaGEiLz4KPGZlTW9ycGhvbG9neSByYWRpdXM9IjIiIG9wZXJhdG9yPSJlcm9kZSIgaW49IlNvdXJjZUFscGhhIiByZXN1bHQ9ImVmZmVjdDFfZHJvcFNoYWRvd18xMzFfMTA0OTQiLz4KPGZlT2Zmc2V0IGR5PSIyIi8+CjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjUiLz4KPGZlQ29sb3JNYXRyaXggdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMC4wNjI3NDUxIDAgMCAwIDAgMC4wOTQxMTc2IDAgMCAwIDAgMC4xNTY4NjMgMCAwIDAgMC4xIDAiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbjI9IkJhY2tncm91bmRJbWFnZUZpeCIgcmVzdWx0PSJlZmZlY3QxX2Ryb3BTaGFkb3dfMTMxXzEwNDk0Ii8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iZWZmZWN0MV9kcm9wU2hhZG93XzEzMV8xMDQ5NCIgcmVzdWx0PSJzaGFwZSIvPgo8L2ZpbHRlcj4KPC9kZWZzPgo8L3N2Zz4K");
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: flex !important;
+}
+
+.sidebar_link summary {
+	list-style: none; /* Убирает стандартный треугольник */
+}
+
+.sidebar_link[open] .arrow {
+	transform: rotate(180deg); /* Поворачиваем стрелку */
+	color: #927cf5;
+}
+
+.sidebar_link .arrow {
+	transition: transform 0.3s ease; /* Плавный поворот */
+}
+
+.checkbox-box svg {
+	display: none;
+}
+
+.checkbox-input:checked + .checkbox-box svg {
+	display: block;
+}
+
+.scroll-left {
+	max-width: calc(100vw - 5rem);
+}
+.details__content p {
+	margin-bottom: 0;
+	line-height: 1.47;
+}
+
+.placeholder input:focus + span,
+.placeholder input:not(:placeholder-shown) + span {
+	opacity: 0;
+	visibility: hidden;
+}
+
+/* Начальные настройки стилизованного текста */
+.placeholder span {
+	opacity: 1;
+	visibility: visible;
+	transition:
+		opacity 0.2s ease,
+		visibility 0.2s ease;
+}
+.has-background {
+	padding: 12px;
+	border-radius: 15px;
+}
+.rev-text::-webkit-scrollbar {
+	width: 2px;
+}
+
+.rev-text::-webkit-scrollbar-track {
+	background: #fff;
+}
+
+.rev-text::-webkit-scrollbar-thumb {
+	background-color: #d6bd7f;
+	border-radius: 0;
+	outline: 1px solid #d6bd7f;
+}
+.calendar-wrapper .flatpickr-calendar.inline .flatpickr-day.flatpickr-disabled,
+.calendar-wrapper
+	.flatpickr-calendar.inline
+	.flatpickr-day.nextMonthDay:not(.selected) {
+	color: #9ca3af;
+}
+.calendar-wrapper .flatpickr-day.nextMonthDay:not(.selected):hover {
+	background: #ffffff;
+	border-color: #ffffff;
+	cursor: not-allowed;
+}
+
+#preview-container .preview {
+	position: relative;
+	width: 61px;
+	height: 61px;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	margin-top: 18px;
+}
+
+#preview-container .preview img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+#preview-container .preview button {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background: #fff;
+	color: #393488;
+	border: none;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+@media (min-width: 560px) {
+	#preview-container .preview {
+		width: 63px;
+		height: 63px;
+	}
+}
+.swiper-pagination-bullet-active {
+	background: #6b7280;
+}
+.swiper-pagination-bullet {
+	width: 12px;
+	height: 12px;
+}
+.time_btn {
+	@apply justify-center items-center gap-8 flex h-[40px] px-[18px] sm:px-7 border-2 bg-white border-gray-200 sm:text-[18px] sm:h-[48px]
+}
+.time_btn.active {
+	@apply  justify-center items-center gap-8 flex h-[40px] px-[18px] sm:px-7 border-2 bg-[#52a6b2] text-white border-[#52a6b2] sm:text-[18px] sm:h-[48px]
+}
+.date_btn {
+	@apply w-[212px] px-12 py-[18px] bg-white border-2 border-gray-200 flex-col justify-start items-center gap-2 inline-flex text-[#1a1a18]
+}
+.date_btn.active {
+	@apply w-[212px] px-12 py-[18px] bg-[#52a6b2] border-2 border-gray-200 flex-col justify-start items-center gap-2 inline-flex text-white
+}

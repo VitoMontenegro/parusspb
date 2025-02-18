@@ -1,0 +1,8 @@
+
+#poststuff #post-body.columns-2 #side-sortables{
+	display: flex;
+	flex-direction: column;
+}
+#acf-group_5f8625a6a2e39 {
+	order: 10;
+}

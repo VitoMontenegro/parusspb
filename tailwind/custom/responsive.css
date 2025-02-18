@@ -1,0 +1,113 @@
+@media (min-width: 2000px) {
+	.banner-top .bg-left {
+		left: 8%;
+	}
+	.banner-top .bg-right {
+		right: 8%;
+	}
+}
+@media (max-width: 1500px) {
+	.banner-top .bg-left, .banner-top .bg-right {
+		display: none;
+	}
+}
+@media (max-width: 1023px) {
+	.header .header_top {
+		padding: 0px 15px 15px;
+	}
+	.header .header_top .header_nav {
+		padding: 14px 0px;
+	}
+}
+@media (min-width: 992px) {
+	.header .header-sticky {
+		position: fixed;
+		width: 100%;
+		top: -60px;
+		left: 0;
+		z-index: 999;
+		box-shadow: 0 6px 5px rgba(0, 0, 0, 0.1);
+		transition: top 0.35s ease;
+		visibility: hidden;
+		padding: 5px 0px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	.header .header-sticky .content_right {
+		height: 45px;
+	}
+	.header.fixed {
+		position: relative;
+	}
+	.header.fixed .header_content .header-sticky {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 999;
+		visibility: visible;
+		transition: top 0.45s ease;
+	}
+}
+@media (max-width: 991px) {
+	.header .header-sticky {
+		display: none;
+	}
+	.banner-top .content-left ul li:before {
+		margin-right: 15px;
+	}
+}
+@media (max-width: 767px) {
+	.header .header_top {
+		padding: 0px 15px 15px;
+	}
+	.header .header_top .header_nav {
+		display: none;
+	}
+	.banner-top .img-slider {
+		display: none;
+	}
+	.product-collection-pages .main-collection .item {
+		padding: 0px 8px 15px 8px;
+	}
+	.main_features .item {
+		margin: 0px 8px 16px 8px;
+	}
+}
+@media (max-width: 400px) {
+	.header_top .site_header .icon-home {
+		margin-right: 55px;
+	}
+	.header_top .site_header .logo-mobile {
+		max-width: 130px;
+	}
+	.header_top .site_header .buttom-hover .active {
+		width: 50px;
+		min-width: 50px;
+		line-height: 50px;
+		padding-top: 15px;
+	}
+	.header_top .site_header .buttom-hover .active span {
+		display: none;
+	}
+	.header_top .site_header .buttom-hover .active span.icon {
+		display: inline-block;
+	}
+	.header_top .site_header .buttom-hover .active span.icon:before {
+		top: -2px;
+	}
+	.tab-homepage .item .img-homepage .content {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+@media (max-width: 325px) {
+	.buttom-mobile a {
+		min-width: 145px;
+		margin-right: 5px;
+	}
+	.buttom-mobile a:active {
+		margin-left: 5px;
+		margin-right: 0px;
+	}
+}
+
