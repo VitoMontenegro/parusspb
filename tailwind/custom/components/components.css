@@ -69,13 +69,20 @@
 	border-color: #52a6b2;
 }
 .flatpickr-calendar.inline .flatpickr-day.inRange {
-	background: #cbe4e8;
-	border-color: #cbe4e8;
+	background: #FFFFFF;
+	border-color: #FFFFFF;
 }
 .flatpickr-calendar.inline .flatpickr-day.inRange {
-	box-shadow:
+	/*box-shadow:
 		-5px 0 0 #cbe4e8,
-		5px 0 0 #cbe4e8;
+		5px 0 0 #cbe4e8;*/
+	box-shadow:none;
+}
+#file-upload-button {
+	cursor: pointer!important;
+}
+input[type="file" i]::-webkit-file-upload-button {
+	cursor: pointer!important;
 }
 .flatpickr-calendar.inline
 	.flatpickr-day.startRange.startRange

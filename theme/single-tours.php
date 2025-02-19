@@ -468,7 +468,7 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 									</div>
 								</div>
 							</div>
-
+							<?php if(isset($startDates)): ?>
 							<form class="flex-col justify-start items-start md:gap-4 flex" id="order_form-page" data-crm="<?php echo $fields['id_crm']; ?>" method="post" enctype="multipart/form-data">
 								<h2 class="mt-4">Забронировать экскурсию</h2>
 								<h3 class="mt-0 sm:text-[24px]">Выберите дату</h3>
@@ -828,7 +828,7 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 														</span>
 											</label>
 											<label class="w-full md:w-1/3 placeholder relative">
-												<input class="bg-[#F2F4F9] text-[#373F41] text-[14px] rounded-[6px] w-full h-10 sm:h-11  px-4 focus:outline-none placeholder-transparent" name="email" type="text" placeholder="Электронная почта*">
+												<input class="bg-[#F2F4F9] text-[#373F41] text-[14px] rounded-[6px] w-full h-10 sm:h-11  px-4 focus:outline-none placeholder-transparent" name="mail" type="text" placeholder="Электронная почта*">
 												<span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#373F41] text-[14px] sm:text-[18px] transition-opacity pointer-events-none">
 															Электронная почта<span class="text-[#373F41]">*</span>
 														</span>
@@ -963,7 +963,9 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 									</div>
 								</div>
 							</form>
-
+							<?php else: ?>
+							<div class="mt-12 w-full px-[42px] py-[15px] bg-white border-2 font-semibold border-[#d6bd7f] justify-center items-center gap-3.5 flex">Сейчас нет билетов на эту экскурсию, выберите, пожалуйста, другую</div>
+							<?php endif; ?>
 
 						</div><!-- .entry-content -->
 					</div>
