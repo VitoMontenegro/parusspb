@@ -147,14 +147,14 @@ wp_reset_postdata();
                                                 </label>
 
 
-                                                <label class="placeholder list-input relative mb-[18px] relative">
+                                                <label class="placeholder list-input relative mb-[18px] relative cursor-pointer">
                                                     <svg class="absolute right-[20px] top-[14px]"  width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <rect width="12" height="1" rx="0.5" fill="#D6BD7F"/>
                                                         <rect y="4" width="12" height="1" rx="0.5" fill="#D6BD7F"/>
                                                         <rect y="8" width="12" height="1" rx="0.5" fill="#D6BD7F"/>
                                                     </svg>
                                                     <input
-                                                        class="bg-[#F2F1FA]   rounded-[6px] w-full h-10 ps-4 pe-11 focus:outline-none placeholder-[#373F41]"
+                                                        class="bg-[#F2F1FA]   rounded-[6px] w-full h-10 ps-4 pe-11 focus:outline-none placeholder-[#373F41] cursor-pointer"
                                                         type="text"
                                                         name="excursObj"
                                                         id="inputField1"
@@ -176,7 +176,7 @@ wp_reset_postdata();
                                                         <rect y="8" width="12" height="1" rx="0.5" fill="#D6BD7F"/>
                                                     </svg>
                                                     <input
-                                                        class="bg-[#F2F1FA]  rounded-[6px] w-full h-10 ps-4 pe-11 focus:outline-none placeholder-[#373F41]"
+                                                        class="bg-[#F2F1FA]  rounded-[6px] w-full h-10 ps-4 pe-11 focus:outline-none placeholder-[#373F41] cursor-pointer"
                                                         type="text"
                                                         name="gid"
                                                         id="inputField2"

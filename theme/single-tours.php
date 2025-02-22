@@ -490,6 +490,42 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 									<input type="hidden" name="amount" value="">
 									<input type="hidden" name="date_and_time" id="date_and_time" value="" />
 
+									<?php if(isset($fields["p_doshkolniki_sale"]) && !empty($fields["p_doshkolniki_sale"])) : ?>
+										<input type="hidden" name="price_childs" value="<?php echo $fields["p_doshkolniki_sale"]; ?>">
+									<?php elseif(isset($fields["p_doshkolniki"]) && !empty($fields["p_doshkolniki"])): ?>
+										<input type="hidden" name="price_childs" value="<?php echo $fields["p_doshkolniki"]; ?>">
+									<?php endif; ?>
+
+									<?php if(isset($fields["p_shkolniki_sale"]) && !empty($fields["p_shkolniki_sale"])) : ?>
+										<input type="hidden" name="price_school" value="<?php echo $fields["p_shkolniki_sale"]; ?>">
+									<?php elseif(isset($fields["p_shkolniki"]) && !empty($fields["p_shkolniki"])): ?>
+										<input type="hidden" name="price_school" value="<?php echo $fields["p_shkolniki"]; ?>">
+									<?php endif; ?>
+
+									<?php if(isset($fields["p_studenty_sale"]) && !empty($fields["p_studenty_sale"])) : ?>
+										<input type="hidden" name="price_students" value="<?php echo $fields["p_studenty_sale"]; ?>">
+									<?php elseif(isset($fields["p_studenty"]) && !empty($fields["p_studenty"])): ?>
+										<input type="hidden" name="price_students" value="<?php echo $fields["p_studenty"]; ?>">
+									<?php endif; ?>
+
+									<?php if(isset($fields["p_vzroslie_sale"]) && !empty($fields["p_vzroslie_sale"])) : ?>
+										<input type="hidden" name="price_adults" value="<?php echo $fields["p_vzroslie_sale"]; ?>">
+									<?php elseif(isset($fields["p_vzroslie"]) && !empty($fields["p_vzroslie"])): ?>
+										<input type="hidden" name="price_adults" value="<?php echo $fields["p_vzroslie"]; ?>">
+									<?php endif; ?>
+
+									<?php if(isset($fields["p_pensionery_sale"]) && !empty($fields["p_pensionery_sale"])) : ?>
+										<input type="hidden" name="price_old" value="<?php echo $fields["p_pensionery_sale"]; ?>">
+									<?php elseif(isset($fields["p_pensionery"]) && !empty($fields["p_pensionery"])): ?>
+										<input type="hidden" name="price_old" value="<?php echo $fields["p_pensionery"]; ?>">
+									<?php endif; ?>
+
+									<?php if(isset($fields["p_vzroslie_inostrancy_sale"]) && !empty($fields["p_vzroslie_inostrancy_sale"])) : ?>
+										<input type="hidden" name="price_adults_for" value="<?php echo $fields["p_vzroslie_inostrancy_sale"]; ?>">
+									<?php elseif(isset($fields["p_vzroslie_inostrancy"]) && !empty($fields["p_vzroslie_inostrancy"])): ?>
+										<input type="hidden" name="price_adults_for" value="<?php echo $fields["p_vzroslie_inostrancy"]; ?>">
+									<?php endif; ?>
+
 								</label>
 								<div class="justify-start items-start gap-5 hidden md:flex dateButtonsContainer">
 									<div class="justify-start items-start gap-5 hidden md:flex dateButtonsContainer" id="dateButtonsContainer"></div>
@@ -527,7 +563,7 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 										</button>
 									</div>
 									<div class="tickets_addr_note"></div>
-									<div class="text-[#1a1a18] text-lg font-normal leading-normal">Вы выбрали <span class="selected_info">3 января 2025, 10:00</span></div>
+									<div class="text-[#1a1a18] text-lg font-normal leading-normal">Вы выбрали <span class="selected_info"></span></div>
 								</div>
 								<div class="self-stretch flex-col justify-start items-start gap-6 flex">
 									<h3 class="mt-0 sm:text-[24px]">Выберите количество билетов</h3>
@@ -587,10 +623,27 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 														<div class="font-normal leading-normal flex items-center gap-3">
 															<span>Школьный</span>
 															<div class="flex items-center">
-																<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<path fill-rule="evenodd" clip-rule="evenodd" d="M21.2 12.1C21.2 17.4019 16.9019 21.7 11.6 21.7C6.29807 21.7 2 17.4019 2 12.1C2 6.79807 6.29807 2.5 11.6 2.5C16.9019 2.5 21.2 6.79807 21.2 12.1ZM12.8 7.3C12.8 7.96274 12.2627 8.5 11.6 8.5C10.9373 8.5 10.4 7.96274 10.4 7.3C10.4 6.63726 10.9373 6.1 11.6 6.1C12.2627 6.1 12.8 6.63726 12.8 7.3ZM10.4 10.9C9.73726 10.9 9.2 11.4373 9.2 12.1C9.2 12.7627 9.73726 13.3 10.4 13.3V16.9C10.4 17.5627 10.9373 18.1 11.6 18.1H12.8C13.4627 18.1 14 17.5627 14 16.9C14 16.2373 13.4627 15.7 12.8 15.7V12.1C12.8 11.4373 12.2627 10.9 11.6 10.9H10.4Z" fill="#D6BD7F"/>
-																</svg>
-																<span class="text-gray-500">узнать возраст</span>
+																<div class="group relative">
+																	<div class="cursor-pointer flex gap-1 items-center">
+																		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<path fill-rule="evenodd" clip-rule="evenodd" d="M21.2 12.1C21.2 17.4019 16.9019 21.7 11.6 21.7C6.29807 21.7 2 17.4019 2 12.1C2 6.79807 6.29807 2.5 11.6 2.5C16.9019 2.5 21.2 6.79807 21.2 12.1ZM12.8 7.3C12.8 7.96274 12.2627 8.5 11.6 8.5C10.9373 8.5 10.4 7.96274 10.4 7.3C10.4 6.63726 10.9373 6.1 11.6 6.1C12.2627 6.1 12.8 6.63726 12.8 7.3ZM10.4 10.9C9.73726 10.9 9.2 11.4373 9.2 12.1C9.2 12.7627 9.73726 13.3 10.4 13.3V16.9C10.4 17.5627 10.9373 18.1 11.6 18.1H12.8C13.4627 18.1 14 17.5627 14 16.9C14 16.2373 13.4627 15.7 12.8 15.7V12.1C12.8 11.4373 12.2627 10.9 11.6 10.9H10.4Z" fill="#D6BD7F"/>
+																		</svg>
+																		<div class="flex-col justify-start items-center gap-px inline-flex">
+																			<div class="text-gray-500 leading-normal">узнать возраст</div>
+																			<div data-svg-wrapper>
+																				<svg width="120" height="2" viewBox="0 0 120 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+																					<path d="M0.200195 0.599976H136.2" stroke="#6B7280" stroke-dasharray="3 3"/>
+																				</svg>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-[206px] p-2 text-white text-xs bg-gray-900 rounded-md shadow-md opacity-0 invisible transition-opacity duration-200 group-hover:opacity-100 group-hover:visible">
+																		Обзорные экскурсии - до 18 лет. <br>
+																		Пушкин и Петергоф - до 14 лет. <br>
+																		Павловск - до 16 лет. <br>
+																		Гатчина - до 18 лет. <br>
+																	</div>
+																</div>
 															</div>
 														</div>
 														<div class="md:justify-end items-center gap-[30px] md:gap-12 flex text-nowrap">
@@ -848,7 +901,7 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 														<path d="M4.37891 9.31366L6.44772 11.3825L11.6197 6.21045" stroke="#52A6B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 													</svg>
 												</span>
-												<span class="text-[12px] leading-[12px]">Соглашаюсь на обработку персональных данных</span>
+												<span class="text-[12px] leading-[12px]">Соглашаюсь на обработку <a target="_blank" class="link-underline" href="<?php echo esc_url(get_permalink(3)); ?>">персональных данных</a></span>
 											</span>
 										</label>
 									</div>
@@ -941,7 +994,7 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 											</div>
 										</div>
 										<div class="flex-col justify-start md:items-end flex">
-											<div class="md:text-right text-gray-500 text-[14px] md:text-[16px] font-normal leading-normal">Вы выбрали <span class="tickets"></span> на <span class="selected_info"></span></div>
+											<div class="md:text-right text-gray-500 text-[14px] md:text-[16px] font-normal leading-normal">Вы выбрали <span class="tickets"></span> на <span class="selected_info_full"></span></div>
 											<div class="text-right">
 												<span class="leading-normal">на сумму:</span>
 												<!--<span class="line-through">11 900 ₽</span>-->
@@ -964,7 +1017,10 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 								</div>
 							</form>
 							<?php else: ?>
-							<div class="mt-12 w-full px-[42px] py-[15px] bg-white border-2 font-semibold border-[#d6bd7f] justify-center items-center gap-3.5 flex">Сейчас нет билетов на эту экскурсию, выберите, пожалуйста, другую</div>
+							<div class="mt-12 w-full px-[42px] py-[15px] bg-white border-2 font-semibold border-[#d6bd7f] text-center">
+								Сейчас нет билетов на эту экскурсию.
+								<br>
+								Выберите, пожалуйста, другую экскурсию в нашем <a class="underline text-[#52A6B2] hover:no-underline" href="/">каталоге.</a></div>
 							<?php endif; ?>
 
 						</div><!-- .entry-content -->

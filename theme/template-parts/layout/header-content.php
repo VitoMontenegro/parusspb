@@ -15,7 +15,7 @@ $options = get_fields( 'option');
 	<div class="container">
 		<div class="flex justify-between py-[16px] items-center border-b-[1px] border-[#D6BD7F]">
 			<div class="flex gap-[12px] items-center">
-				<button id="menu-toggle" aria-controls="primary-menu" aria-expanded="false" class="me-1 group is-active block md:hidden" aria-label="открыть меню">
+				<button id="menu-toggle" aria-controls="primary-menu" aria-expanded="false" class="me-1 group is-active block md:hidden w-6" aria-label="открыть меню">
 					<span class="hidden group-[.is-active]:block">
 						<svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<rect width="24" height="2" fill="#393488"></rect>
@@ -79,7 +79,7 @@ $options = get_fields( 'option');
 				<?php
 				endif;
 				?>
-				<form class="search-form relative hidden sm:flex search-form flex px-5 h-10 bg-white items-center rounded-[6px] border border-[#000000] w-[180px] lg:w-[310px] items-center mb-0 text-[16px]">
+				<form class="search-form relative hidden sm:flex search-form flex px-5 h-10 bg-white items-center rounded-[6px] border border-[#000000] w-[200px] md:w-[310px] items-center mb-0 text-[16px]">
 					<button type="submit" class="me-3" aria-label="Поиск">
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
 							<path d="M18.0126 16.9873L17.9419 17.058L18.0126 16.9873L14.165 13.1405C15.2765 11.77 15.8287 10.0285 15.7084 8.26582C15.586 6.47275 14.777 4.79591 13.4497 3.58412C12.1225 2.37233 10.3791 1.71888 8.58234 1.75971C6.78557 1.80055 5.07371 2.53252 3.80287 3.80336C2.53203 5.0742 1.80006 6.78606 1.75923 8.58283C1.71839 10.3796 2.37184 12.123 3.58363 13.4502C4.79542 14.7775 6.47226 15.5865 8.26533 15.7089C10.028 15.8292 11.7695 15.277 13.14 14.1655L16.9868 18.0131L17.0575 17.9424L16.9868 18.0131C17.0541 18.0804 17.1341 18.1339 17.2221 18.1703C17.3101 18.2068 17.4044 18.2255 17.4997 18.2255C17.5949 18.2255 17.6893 18.2068 17.7773 18.1703C17.8653 18.1339 17.9452 18.0804 18.0126 18.0131C18.0799 17.9457 18.1334 17.8658 18.1698 17.7778C18.2063 17.6898 18.225 17.5954 18.225 17.5002C18.225 17.4049 18.2063 17.3106 18.1698 17.2226C18.1334 17.1346 18.0799 17.0546 18.0126 16.9873ZM3.22469 8.75018C3.22469 7.65744 3.54873 6.58923 4.15582 5.68065C4.76292 4.77207 5.6258 4.06392 6.63536 3.64574C7.64493 3.22757 8.75582 3.11816 9.82756 3.33134C10.8993 3.54452 11.8838 4.07073 12.6565 4.84341C13.4291 5.6161 13.9553 6.60056 14.1685 7.6723C14.3817 8.74405 14.2723 9.85494 13.8541 10.8645C13.436 11.8741 12.7278 12.737 11.8192 13.344C10.9107 13.9511 9.8425 14.2752 8.7498 14.2752C7.28495 14.2736 5.88056 13.6909 4.84475 12.6551C3.80897 11.6193 3.22634 10.215 3.22469 8.75018Z" fill="#373F41" stroke="#373F41" stroke-width="0.2"></path>
@@ -89,7 +89,7 @@ $options = get_fields( 'option');
 				</form>
 			</div>
 			<div class="flex items-center">
-				<a target="_blank" href="tel:<?php echo  preg_replace('/[^0-9+]/', '', $options['phone']);  ?>" class="phone flex gap-1 items-center min-h-7 me-3 sm:me-5 flex">
+				<a target="_blank" href="tel:<?php echo  preg_replace('/[^0-9+]/', '', $options['phone']);  ?>" class="phone hidden xs:flex gap-1 items-center min-h-7 me-3 md:me-5">
 					<svg class="lg:hidden " xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<g clip-path="url(#clip0_171_1007)">
 							<circle cx="12" cy="12" r="12" fill="#D6BD7F"/>
@@ -103,7 +103,7 @@ $options = get_fields( 'option');
 					</svg>
 					<span class="text-[16px] font-bold hidden lg:block"><?php echo $options['phone'];?></span>
 				</a>
-				<a target="_blank" href=https://api.whatsapp.com/send?phone=<?php echo preg_replace('/[^0-9]/', '', $options['watsapp']);  ?>&text=Здравствуйте.+Я+обращаюсь+с+сайта+groupspb.ru" class="watsapp hidden md:flex gap-1 items-center min-h-7 me-2 sm:me-3">
+				<a target="_blank" href=https://api.whatsapp.com/send?phone=<?php echo preg_replace('/[^0-9]/', '', $options['watsapp']);  ?>&text=Здравствуйте.+Я+обращаюсь+с+сайта+groupspb.ru" class="watsapp flex gap-1 items-center min-h-7 me-3">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/whatsapp.svg" alt="" class="object-contain w-6 h-6">
 				</a>
 				<a target="_blank" href="tg://resolve?domain=<?php echo $options['telegram'];  ?>" class=" me-2 sm:me-3">
@@ -152,10 +152,129 @@ $options = get_fields( 'option');
 
 
 <!-- Меню для мобильной версии -->
-<div id="mobile-menu" class="px-4 z-10 fixed top-[65px] left-0 w-full max-w-[455px]  bg-white transform -translate-x-full transition-transform duration-300 ease-in-out font-bold h-screen overflow-auto pt-5">
-	<div class="flex flex-wrap md:flex-row flex-col gap-3 items-start justify-between">
+
+<?php
+$menu_items = wp_get_nav_menu_items('main_menu');
+$menu_tree = [];
+
+// Проверяем, получили ли мы элементы меню
+if ($menu_items) {
+	foreach ($menu_items as $item) {
+		if ($item->menu_item_parent == 0) {
+			$menu_tree[$item->ID] = ['item' => $item, 'children' => []];
+		} else {
+			if (!isset($menu_tree[$item->menu_item_parent])) {
+				$menu_tree[$item->menu_item_parent] = ['item' => null, 'children' => []];
+			}
+			$menu_tree[$item->menu_item_parent]['children'][] = $item;
+		}
+	}
+}
+?>
 
 
+<section>
+	<div class="container mx-auto">
+		<div class="flex justify-between items-center">
+			<ul class="flex items-center gap-6  hidden md:flex tracking-[.2px]">
+				<?php foreach ($menu_tree as $menu): ?>
+					<?php if (!isset($menu['item']) || !$menu['item']) continue;
+					$hasChildren = !empty($menu['children']);
+					?>
+					<li class="group relative pt-[14px] pb-[12px] md:items-start lg:items-center flex items-center lg:gap-2">
+						<?php $munuUrl = (strpos($menu['item']->url, '/ekskursii-peterburg') !== false) ? esc_url( home_url()) : esc_url($menu['item']->url); ?>
+
+						<a href="<?php echo $munuUrl; ?>" class="font-medium items-center max-w-none sm:max-v-[165px] lg:max-w-none  leading-[16px] sm:max-w-[145px] lg:max-w-none">
+							<?php echo esc_html($menu['item']->title); ?>
+						</a>
+						<?php if ($hasChildren) : ?>
+
+							<svg class="mt-0 sm:mt-[2px] min-w-[12px] " xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+								<g clip-path="url(#clip0_135_6833)">
+									<path d="M1.5 3.75L6 8.25L10.5 3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+								</g>
+								<defs>
+									<clipPath>
+										<rect width="12" height="12" fill="white" transform="translate(12) rotate(90)"></rect>
+									</clipPath>
+								</defs>
+							</svg>
+							<ul class="submenu absolute top-10 bg-[#FFFFFF] w-full px-2 py-4 z-10  flex-col gap-1 border hidden group-hover:flex rounded-md min-w-[125px] z-20 min-w-[150px]">
+
+								<?php foreach($menu['children'] as $child): ?>
+									<li>
+										<a href="<?php echo esc_url($child->url); ?>" class="font-semibold py-1.5 rounded-md hover:bg-[#52A6b2]  hover:text-white block w-full px-2"><?php echo esc_html($child->title); ?></a>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+						<?php endif; ?>
+					</li>
+
+				<?php endforeach; ?>
+
+
+			</ul>
+		</div>
+	</div>
+
+</section>
+
+<div id="mobile-menu" class="px-4 z-10 fixed top-[65px] left-0 w-full max-w-[455px] bg-white transform transition-transform duration-300 ease-in-out h-screen overflow-auto -translate-x-[1700px]">
+	<ul class="flex flex-col">
+		<?php foreach ($menu_tree as $menu): ?>
+			<?php if (!isset($menu['item']) || !$menu['item']) continue;
+			$hasChildren = !empty($menu['children']);
+			?>
+			<li class="flex flex-col">
+				<?php $munuUrl = (strpos($menu['item']->url, '/ekskursii-peterburg') !== false) ? esc_url( home_url()) : esc_url($menu['item']->url); ?>
+				<details class="sidebar_link_main" name="mobile_menu">
+					<summary class="flex items-center justify-between cursor-pointer py-[18px]">
+						<a href="<?php echo $munuUrl; ?>" class="font-medium items-center leading-[16px]e">
+							<?php echo esc_html($menu['item']->title); ?>
+						</a>
+						<?php if ($hasChildren) : ?>
+						<svg class="arrow_main mt-0 sm:mt-[2px] min-w-[12px] " xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+							<g clip-path="url(#clip0_135_6833)">
+								<path d="M1.5 3.75L6 8.25L10.5 3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+							</g>
+							<defs>
+								<clipPath>
+									<rect width="12" height="12" fill="white" transform="translate(12) rotate(90)"></rect>
+								</clipPath>
+							</defs>
+						</svg>
+						<?php endif; ?>
+					</summary>
+
+					<?php if ($hasChildren) : ?>
+
+					<ul class="flex flex-col font-medium pl-4">
+
+						<?php foreach($menu['children'] as $child): ?>
+							<li>
+								<a href="<?php echo esc_url($child->url); ?>" class="block py-[14px] font-medium items-center leading-[16px]"><?php echo esc_html($child->title); ?></a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
+				</details>
+				<div class="w-full h-[1px] bg-gray-200"></div>
+
+			</li>
+
+		<?php endforeach; ?>
+
+	</ul>
+	<div class="flex flex-col gap-3 mt-8 mb-[110px]">
+		<a class="font-semibold text-[20px]" href="tel:+78126271769">+7 (812) 627-17-69</a>
+		<div class="flex items-center gap-[18px]">
+			<a target="_blank" href=https://api.whatsapp.com/send?phone=<?php echo preg_replace('/[^0-9]/', '', $options['watsapp']);  ?>&text=Здравствуйте.+Я+обращаюсь+с+сайта+groupspb.ru" class="watsapp">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/whatsapp.svg" alt="" class="object-contain w-8 h-8">
+			</a>
+			<a target="_blank" href="tg://resolve?domain=<?php echo $options['telegram'];  ?>" class="me-2 sm:me-3">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/telegram.svg" alt="" class="object-contain  w-8 h-8">
+			</a>
+		</div>
+		<iframe src="https://yandex.ru/sprav/widget/rating-badge/92802349227?type=rating" width="150" height="50" frameborder="0"></iframe>
 	</div>
 </div>
-<?php get_template_part( 'template-parts/layout/subheader', 'content' ); ?>

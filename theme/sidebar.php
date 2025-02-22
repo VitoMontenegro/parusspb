@@ -14,7 +14,7 @@ $queryParams = $_SERVER['QUERY_STRING'] ? '?' .$_SERVER['QUERY_STRING'] : '';
 
 
 ?>
-<aside id="sidebar-menu" class="no-scrollbar transition-all duration-300 ease-in-out z-[9999999] lg:z-10 top-0 fixed lg:sticky top-3 lg:top-[-400px] w-full max-w-[96vw] h-full transform lg:relative filter lg:w-[322px] min-w-[322px] overflow-auto bg-white left-[2vw]  -translate-x-[1700px] lg:translate-x-0">
+<aside id="sidebar-menu" class="no-scrollbar transition-all duration-300 ease-in-out z-[9999999] lg:z-10 top-0 fixed lg:sticky top-3 lg:top-[-400px] w-full max-w-[96vw] h-full transform lg:relative filter lg:w-[322px] min-w-[322px] overflow-auto bg-white left-[2vw]  -translate-x-[1700px] lg:translate-x-0 rounded-[6px]">
 	<div class="p-5 rounded-lg lg:h-full border border-1 border-[#E5E7EB] shadows_custom rounded-[6px]">
 		<div class="flex lg:hidden justify-end relative -top-[10px] -right-1 bg-white relative">
 			<button class="close-filter-btn">
@@ -40,7 +40,7 @@ $queryParams = $_SERVER['QUERY_STRING'] ? '?' .$_SERVER['QUERY_STRING'] : '';
 						$current_term = get_queried_object();
 						$fieldsCat = get_fields("term_".$cat['id']);
 					?>
-					<?php if( !isset($fieldsCat['exclude']) || empty($fieldsCat['exclude'] || !$fieldsCat['exclude'])): ?>
+					<?php if( !isset($fieldsCat['exclude']) || (isset($fieldsCat['exclude']) && !$fieldsCat['exclude'])): ?>
 						<div class="flex items-center">
 							<?php if($cat['current']): ?>
 								<span  class="rounded-[6px] bg-[#52a6b2] text-white transition px-[13px] h-8 flex items-center">

@@ -159,9 +159,9 @@ get_header();
 											<img src="<?php echo $item['img']["sizes"]["medium_large"]; ?>"  alt="<?php echo $item['img']["filename"]; ?>" data-src="<?php echo $item['img']["url"]; ?>" class="h-[200px] object-cover w-full">
 											<div class="p-6">
 												<?php if(isset($item['link']) && !empty($item['link'])): ?>
-													<a href="<?php echo $item['link'] ;?>" class="text-[20px] font-bold mb-1 !no-underline !text-[#111827]"><?php echo $item['name']; ?></a>
+													<a href="<?php echo $item['link'] ;?>" class="block text-[20px] font-bold mb-2 !no-underline !text-[#111827]"><?php echo $item['name']; ?></a>
 												<?php else: ?>
-													<div class="text-[20px] font-bold mb-1"><?php echo $item['name']; ?></div>
+													<div class="text-[20px] font-bold mb-2"><?php echo $item['name']; ?></div>
 												<?php endif; ?>
 												<div class="text-[#6B7280]"><?php echo $item['description']; ?></div>
 											</div>

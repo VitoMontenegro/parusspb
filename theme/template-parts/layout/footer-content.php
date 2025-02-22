@@ -189,7 +189,7 @@ $options = get_fields( 'option');
 			</button>
 			<label for="agree" class="flex gap-2 items-center cursor-pointer">
 				<input type="checkbox" name="agree" id="agree" checked="" class="w-[16px] h-[16px] accent-[#f56630]">
-				<span class="text-[9px] leading-[12px]">Соглашаюсь на обработку персональных данных</span>
+				<span class="text-[9px] leading-[12px]">Соглашаюсь на обработку <a target="_blank" class="link-underline" href="<?php echo esc_url(get_permalink(3)); ?>">персональных данных</a></span>
 			</label>
 		</div>
 	</form>
@@ -270,3 +270,7 @@ $options = get_fields( 'option');
 	</div>
 </div>
 
+<div id="cookie-banner" class="fixed bottom-6 left-[4vw] sm:left-6 w-[92vw] sm:w-[530px] p-6 bg-white shadows_custom rounded-[5px] z-10 hidden">
+	<div class="text-[16px] leading-[22px] mb-6 text-[#000]">Оставаясь на сайте вы принимаете условия <a target="_blank" class="link-underline" href="<?php echo esc_url(get_permalink(3)); ?>">использование файлов Cookie</a> и обработку <a target="_blank" class="link-underline" href="<?php echo esc_url(get_permalink(19825)); ?>">персональных данных «Яндекс.Метрикой»</a></div>
+	<button id="accept-cookies" class="flex h-11 items-center justify-center font-medium sm:font-medium rounded-md bg-[#52A6B2] hover:bg-[#44909B] text-white text-[14px] lg:text-[16px] w-full">Принимаю</button>
+</div>

@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// Сохраняем экземпляр Flatpickr
 
-	let selectedDatesRange = null;
+/*	let selectedDatesRange = null;
 	const calendarInstance = flatpickr('#calendar', {
 		inline: true,
 		mode: 'range',
@@ -378,6 +378,34 @@ document.addEventListener('DOMContentLoaded', () => {
 				range: dateStr,
 			};
 		},
+	});*/
+	let selectedDatesRange = null;
+
+	const calendarInstance = flatpickr('#calendar', {
+		inline: true,
+		mode: 'range',
+		minDate: 'today',
+		dateFormat: 'Y-m-d',
+		locale: 'ru',
+		onChange: function (selectedDates, dateStr, instance) {
+			selectedDatesRange = {
+				dates: selectedDates,
+				range: dateStr,
+			};
+
+			// Очищаем старый подтвержденный диапазон при новом клике
+			document.querySelectorAll(".flatpickr-day.confirmed-range").forEach(el => {
+				el.classList.remove("confirmed-range");
+			});
+
+			if (selectedDates.length === 2) {
+				setTimeout(() => { // Ждём отрисовки flatpickr
+					document.querySelectorAll(".flatpickr-day.inRange").forEach(el => {
+						el.classList.add("confirmed-range");
+					});
+				}, 10);
+			}
+		}
 	});
 
 	const okBtn = document.getElementById('okBtn');
@@ -1589,6 +1617,11 @@ const formatDate = (dateString) => {
 	const [year, month, day] = dateString.split('-');
 	return `${parseInt(day)} ${monthToText(parseInt(month))}`;
 };
+// Функция для форматирования даты в "день месяц"
+const formatDateFull = (dateString) => {
+	const [year, month, day] = dateString.split('-');
+	return `${parseInt(day)} ${monthToText(parseInt(month))} ${year}`;
+};
 
 document.addEventListener('DOMContentLoaded', () => {
 	document.body.addEventListener('click', (event) => {
@@ -1641,6 +1674,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		document.getElementById('date_and_time').value =  document.querySelector('#order_form-page [type=date]').value + ' ' + t;
 		document.querySelectorAll('.selected_info').forEach(function (element) {
 			element.innerHTML = formatDate(document.querySelector('#order_form-page [type=date]').value) + ', ' + t;
+		});
+		document.querySelectorAll('.selected_info_full').forEach(function (element) {
+			element.innerHTML = formatDateFull(document.querySelector('#order_form-page [type=date]').value) + ', ' + t;
 		});
 	});
 });
@@ -1784,6 +1820,7 @@ function changeForm() {
 		console.log('totalCount>>',totalCount)*/
 		document.querySelector('[name=promo]').dispatchEvent(new Event('keyup'));
 		document.querySelector('[name=true_price]').value = totalAmount;
+		document.querySelector('[name=amount]').value = totalCount;
 		document.querySelector('.t_price').textContent = totalAmount;
 		//document.querySelector('.t_count').textContent = totalCount;
 
@@ -1881,3 +1918,16 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", function() {
+	const banner = document.getElementById("cookie-banner");
+	const acceptBtn = document.getElementById("accept-cookies");
+
+	if (!localStorage.getItem("cookiesAccepted")) {
+		banner.classList.remove("hidden");
+	}
+
+	acceptBtn.addEventListener("click", function() {
+		localStorage.setItem("cookiesAccepted", "true");
+		banner.classList.add("hidden");
+	});
+});

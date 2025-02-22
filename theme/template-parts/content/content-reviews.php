@@ -37,8 +37,8 @@ $sub = array(".01." => " января ", ".02." => " февраля ",
 			$content = strip_tags($content);
 			$content_length = mb_strlen($content, 'UTF-8');
 		?>
-		<?php if ($content_length > 400): ?>
-		<div class="text-[#52A6B2] cursor-pointer togler">Читать весь отзыв</div>
+		<?php if ($content_length > 453): ?>
+		<div class="text-[#52A6B2] cursor-pointer togler hidden sm:block">Читать весь отзыв</div>
 		<?php endif; ?>
 	</div>
 
@@ -54,17 +54,17 @@ $sub = array(".01." => " января ", ".02." => " февраля ",
 	<?php if(isset($fields['excursion']) && !empty($fields['excursion']) || (isset($fields['excursion_obj']) && !empty($fields['excursion_obj']))) : ?>
 	<div class="mt-4 font-bold text-[#52A6B2] lines three-lines">
 
-	
+
 		<?php if(isset($fields['excursion_obj']) && $fields['excursion_obj']):  ?>
 			<?php if(get_post_status($fields['excursion_obj']) === 'publish') :?>
-				<a href="<?php echo esc_url(get_permalink($fields['excursion_obj'])); ?>"> 
+				<a href="<?php echo esc_url(get_permalink($fields['excursion_obj'])); ?>">
 					<?php  echo get_the_title($fields['excursion_obj']);  ?>
 				</a>
-			<?php else: ?>	
-				<span> 
-				<?php  echo get_the_title($fields['excursion_obj']);  ?></span>											
+			<?php else: ?>
+				<span>
+				<?php  echo get_the_title($fields['excursion_obj']);  ?></span>
 			<?php endif; ?>
-			
+
 		<?php elseif(isset($fields['excursion']) && $fields['excursion']) : ?>
 			Экскурсия: <?php echo $fields['excursion']; ?>
 		<?php endif; ?>
@@ -76,7 +76,7 @@ $sub = array(".01." => " января ", ".02." => " февраля ",
 	<?php if(isset($fields['gid']) && !empty($fields['gid'])): ?>
 	<div class="text-[#6B7280] sm:pb-4 mt-3">Гид: <?php echo $fields['gid']; ?></div>
 	<?php endif; ?>
-	
+
 	<?php if(isset($fields['review_answer']) && !empty($fields['review_answer'])): ?>
 	<div class="px-4 pt-3 flex flex-col gap-3 bg-[#EFEDE7] rounded-[14px]">
 		<div class="text-[14px]">Ответ ГРУПСПБ <span class="text-[#6B7280]">

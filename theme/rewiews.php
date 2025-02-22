@@ -44,14 +44,14 @@ wp_reset_postdata();
 								'мая'      => '05', 'июня'    => '06', 'июля'     => '07', 'августа'  => '08',
 								'сентября' => '09', 'октября' => '10', 'ноября'   => '11', 'декабря'  => '12'
 							];
-							
+
 							// Получаем и сортируем записи
 							$posts = [];
 							if ($query->have_posts()) {
 								while ($query->have_posts()) {
 									$query->the_post();
 									$acf_date = get_field('date');
-							
+
 									if ($acf_date) {
 										$date_parts = explode(' ', $acf_date);
 										if (count($date_parts) === 3) {
@@ -65,7 +65,7 @@ wp_reset_postdata();
 									} else {
 										$formatted_date = '0000-00-00';
 									}
-							
+
 									$posts[] = [
 										'id'    => get_the_ID(),
 										'date'  => $acf_date,
@@ -73,18 +73,18 @@ wp_reset_postdata();
 									];
 								}
 							}
-							
+
 							// Сортируем по убыванию даты
 							usort($posts, function($a, $b) {
 								return strcmp($b['sort_date'], $a['sort_date']);
 							});
-							
+
 							// Разбиваем по 10 записей
 							$posts_per_page = 10;
 							$total_posts = count($posts);
 							$total_pages = ceil($total_posts / $posts_per_page);
 							$posts_paginated = array_slice($posts, 0, $posts_per_page); // Первые 10 записей
-							
+
 							if (!empty($posts_paginated)) :
 
 
@@ -183,7 +183,7 @@ wp_reset_postdata();
 														<path d="M4.37891 9.31366L6.44772 11.3825L11.6197 6.21045" stroke="#52A6B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 													</svg>
 												</span>
-									<span class="text-[9px] leading-[12px]">Соглашаюсь на обработку персональных данных</span>
+									<span class="text-[9px] leading-[12px]">Соглашаюсь на обработку <a target="_blank" class="link-underline" href="<?php echo esc_url(get_permalink(3)); ?>">персональных данных</a></span>
 								</label>
 							</form>
 						</div>
