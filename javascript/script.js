@@ -660,7 +660,6 @@ document.addEventListener('DOMContentLoaded', () => {
 					return response.json(); // Парсим JSON-ответ
 				})
 				.then((data) => {
-					console.log(data.data);
 					document.getElementById('tours').innerHTML = data.data.html;
 					document
 						.getElementById('card_link')
@@ -1659,7 +1658,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				.then((response) => response.json())
 				.then((data) => {
 					updatePrices(data);
-					console.log(data);
 					document
 						.getElementById('all-prices')
 						.classList.remove('loading');
@@ -1799,6 +1797,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 });
 
+
+
 function changeForm() {
 
 		let totalAmount = 0;
@@ -1806,22 +1806,22 @@ function changeForm() {
 		document.querySelectorAll('.quantity-input').forEach(input => {
 			let inputAmountContent = input.parentElement.parentElement.previousElementSibling.querySelector('.price').textContent;
 			let inputTotalContent = input.parentElement.nextElementSibling.querySelector('.price');
-			let inputAmount = parseInt(inputAmountContent, 10);
-			let inputValue = Number(input.value);
+			let inputAmount = parseInt(inputAmountContent, 10); //цена
+			let inputValue = Number(input.value); //кол-тво
+
+
+
 
 			let inputAmountMultiply = inputValue * inputAmount;
 			inputTotalContent.textContent = inputAmountMultiply
-			console.log(inputTotalContent, inputAmountMultiply)
-			totalCount += inputValue;
-			totalAmount += inputAmountMultiply;
+			totalCount += inputValue;  //общее кол-тво
+			totalAmount += inputAmountMultiply; // общая сумма
 
 		});
-		/*console.log('totalAmount>>',totalAmount)
-		console.log('totalCount>>',totalCount)*/
 		document.querySelector('[name=promo]').dispatchEvent(new Event('keyup'));
 		document.querySelector('[name=true_price]').value = totalAmount;
-		document.querySelector('[name=amount]').value = totalCount;
-		document.querySelector('.t_price').textContent = totalAmount;
+		document.querySelector('[name=amount]').value = totalAmount ?? 0;
+		document.querySelector('.t_price').textContent = totalAmount ?? 0;
 		//document.querySelector('.t_count').textContent = totalCount;
 
 
@@ -1835,18 +1835,83 @@ function declOfNum(number, words) {
 	return words[(number % 100 > 4 && number % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(number % 10 < 5) ? Math.abs(number) % 10 : 5]];
 }
 function updateSalePrice() {
-	/*const discountCheckbox = document.querySelector('[name="20percent"]:checked');
+	const discountCheckbox = document.querySelector('[name="20percent"]:checked');
 
 	if (discountCheckbox && discountCheckbox.value === 'on') {
 		let totalPrice = parseFloat(document.querySelector('.t_price').textContent);
 		let totalSalePrice = totalPrice * 0.3;
 
 		document.querySelector('.total-sale_price_count').textContent = Math.round(totalSalePrice);
-		document.querySelector('.total-sale_price').style.display = 'block';
+		document.querySelector('.total-sale_price').classList.remove("hidden");
 	} else {
-		document.querySelector('.total-sale_price').style.display = 'none';
-	}*/
+		document.querySelector('.total-sale_price').classList.add("hidden");
+	}
 }
+function checkorderform() {
+	const ParForm = document.querySelector('#order_form-page');
+	document.querySelectorAll('.error_form_mes').forEach(el => el.remove());
+
+	const phone = ParForm.querySelector('[name=phone]').value.trim();
+	const name = ParForm.querySelector('[name=name]').value.trim();
+	const mail = ParForm.querySelector('[name=mail]').value.trim();
+
+	let people_count = 0;
+	let error = 0;
+
+	const rePhone = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+	const reMail = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+
+	const validPhone = rePhone.test(phone);
+	const validMail = reMail.test(mail);
+
+	document.querySelectorAll('.quantity-input').forEach(input => {
+		people_count += parseInt(input.value) || 0;
+	});
+
+	if (people_count === 0) {
+		const errorMsg = document.createElement('div');
+		errorMsg.className = 'text-red';
+		errorMsg.textContent = 'Выберите кол-во билетов';
+		document.querySelector('.tours-content__form-title').after(errorMsg);
+		error = 1;
+	} else {
+		document.querySelectorAll('.error_form_mes_time.ch_count').forEach(el => el.remove());
+	}
+
+	if (!name) {
+		const errorMsg = document.createElement('div');
+		errorMsg.className = 'error_form_mes error_form_mes_time fio';
+		errorMsg.textContent = 'Заполните поле';
+		document.querySelector('.fio_field').classList.add('alert');
+		error = 1;
+	} else {
+		document.querySelector('.fio_field').classList.remove('alert');
+	}
+
+	if (!phone) {
+		document.querySelector('.phones_field').classList.add('alert');
+		error = 1;
+	} else if (!validPhone) {
+		document.querySelector('.phones_field').classList.add('alert');
+		error = 1;
+	} else {
+		document.querySelector('.phones_field').classList.remove('alert');
+	}
+
+	if (!mail) {
+		document.querySelector('.email_field').classList.add('alert');
+		error = 1;
+	 }else if (!validMail) {
+		document.querySelector('.email_field').classList.add('alert');
+		error = 1;
+	} else {
+		document.querySelector('.email_field').classList.remove('alert');
+	}
+
+
+	return error;
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
 	document.addEventListener('click', (event) => {
@@ -1862,6 +1927,10 @@ document.addEventListener('DOMContentLoaded', function () {
 				}
 			}
 			changeForm();
+		}
+
+		if (event.target.matches('[name="20percent"]')) {
+			updateSalePrice();
 		}
 
 		// Проверяем, была ли нажата кнопка уменьшения
@@ -1881,10 +1950,18 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 
 		if (event.target.id === 'submit_buy') {
+			if(checkorderform()) return;
 			const form = document.getElementById('order_form-page')
 			const formData = new FormData(form);
+			let button = event.target;
+			let text = button.querySelector('.btn-text');
+			let loader = button.querySelector('.loader');
+			console.log(button)
+			button.disabled = true;
+			text.classList.add('hidden');
+			loader.classList.remove('hidden');
 
-			fetch('/wp-json/custom/v1/add_ticket', {
+			fetch('/wp-content/themes/tw/theme/handler/buy_form.php', {
 				method: 'POST',
 				headers: {
 					// Убедитесь, что REST API доступен без авторизации или передайте токен авторизации.
@@ -1904,6 +1981,9 @@ document.addEventListener('DOMContentLoaded', function () {
 				})
 				.then((data) => {
 					console.log('Ответ сервера:', data);
+					const form = document.querySelector('#order_form-page');
+					form.action = data.pay_url;
+					form.submit();
 				})
 				.catch((error) => {
 					console.error('Ошибка:', error);
@@ -1911,23 +1991,171 @@ document.addEventListener('DOMContentLoaded', function () {
 				})
 				.finally(() => {
 					//document.querySelector('.page-loader').style.display = 'none';
+					button.disabled = false;
+					text.classList.remove('hidden');
+					loader.classList.add('hidden');
+				});
+		}
+
+		if (event.target.id === 'submit_request') {
+
+			if(checkorderform()) return;
+			let button = event.target;
+			let text = button.querySelector('.btn-text');
+			let loader = button.querySelector('.loader');
+			button.disabled = true;
+			text.classList.add('hidden');
+			loader.classList.remove('hidden');
+			const form = document.getElementById('order_form-page')
+			const formData = new FormData(form);
+
+			fetch('/wp-content/themes/tw/theme/handler/order_form.php', {
+				method: 'POST',
+				headers: {
+					// Убедитесь, что REST API доступен без авторизации или передайте токен авторизации.
+					//'X-WP-Nonce': wpApiSettings.nonce // Если требуется авторизация
+				},
+				body: formData,
+			})
+				.then((response) => {
+					if (!response.ok) {
+						return response.json().then((err) => {
+							throw new Error(
+								err.message || 'Ошибка при отправке формы'
+							);
+						});
+					}
+					return response.json();
+				})
+				.then((data) => {
+					console.log('Ответ сервера:', data);
+
+					setTimeout(()=> {
+						const popup = document.querySelector(
+							'.popup[data-popup="popup-success-order"]'
+						);
+						if (popup) {
+							popup.classList.remove('hidden');
+						}
+						// Восстанавливаем кнопку
+
+						document.getElementById('order_form-page').reset();
+						button.disabled = false;
+						text.classList.remove('hidden');
+						loader.classList.add('hidden');
+					},10);
+				})
+				.catch((error) => {
+					console.error('Ошибка:', error);
+					alert(error.message || 'Что-то пошло не так');
+				})
+				.finally(() => {
+					//document.querySelector('.page-loader').style.display = 'none';
+					button.disabled = false;
+					text.classList.remove('hidden');
+					loader.classList.add('hidden');
 				});
 		}
 	})
 
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+	const input = document.querySelector('[name=promo]');
+	const promoLoader = document.querySelector('.promo-loader');
+	const promoOk = document.getElementById('promo_ok');
+	let timeOut;
 
-document.addEventListener("DOMContentLoaded", function() {
+	input.addEventListener('keyup', () => {
+
+		if (input.value) {
+			promoLoader.classList.add('active');
+			clearTimeout(timeOut);
+			timeOut = setTimeout(() => myfunc(input.value), 2000);
+			promoOk.style.display = 'none';
+		} else {
+			promoLoader.classList.remove('active');
+		}
+	});
+
+	input.addEventListener('keydown', () => {
+		clearTimeout(timeOut);
+	});
+
+	input.addEventListener('change', () => {
+		if (!input.value) {
+			promoLoader.classList.remove('active');
+			promoOk.style.display = 'none';
+		}
+	});
+
+	async function myfunc(value) {
+		const formData = new FormData(document.getElementById('order_form-page'));
+		formData.append('promo', value);
+
+		try {
+			const response = await fetch('/wp-content/themes/tw/theme/handler/validate_promo.php', {
+				method: 'POST',
+				body: formData
+			});
+
+			const data = await response.json();
+			promoLoader.classList.remove('active');
+
+			if (data.ok) {
+				const discount = parseInt(data.minus);
+				document.getElementById('discount').dataset.fulldiscount = discount;
+
+				const amountInput = document.querySelector('[name=amount]');
+				const newPrice = parseInt(amountInput.value) - discount;
+				amountInput.value = newPrice;
+				document.querySelector('.t_price').textContent = newPrice;
+
+				promoOk.textContent = `Промокод действителен, скидка ${discount} рублей.`;
+				promoOk.style.color = 'green';
+				promoOk.style.display = 'block';
+
+				input.readOnly = true;
+				updateSalePrice();
+			} else {
+				promoOk.textContent = data.msg || 'Промокод не действителен.';
+				promoOk.style.color = 'red';
+				promoOk.style.display = 'block';
+			}
+		} catch (error) {
+			console.error('Ошибка запроса!!:', error);
+		}
+	}
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
 	const banner = document.getElementById("cookie-banner");
 	const acceptBtn = document.getElementById("accept-cookies");
+	let userInteracted = false; // Флаг физического взаимодействия
 
-	if (!localStorage.getItem("cookiesAccepted")) {
-		banner.classList.remove("hidden");
+	if (banner && acceptBtn) {
+		if (!localStorage.getItem("cookiesAccepted")) {
+			banner.classList.remove("hidden");
+		}
+
+		// Отмечаем, что пользователь физически кликнул
+		document.addEventListener("mousedown", function (event) {
+			userInteracted = event.isTrusted;
+		});
+
+		acceptBtn.addEventListener("click", function (event) {
+			localStorage.setItem("cookiesAccepted", "true");
+			banner.classList.add("hidden");
+			event.stopPropagation();
+		});
+
+		document.addEventListener("click", function (event) {
+			if (userInteracted && !banner.contains(event.target)) {
+				banner.classList.add("hidden");
+			}
+			userInteracted = false; // Сбрасываем флаг после обработки
+		});
 	}
-
-	acceptBtn.addEventListener("click", function() {
-		localStorage.setItem("cookiesAccepted", "true");
-		banner.classList.add("hidden");
-	});
 });
+

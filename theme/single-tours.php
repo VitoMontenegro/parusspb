@@ -487,8 +487,16 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 									<input type="hidden" name="trip" value="">
 									<input type="hidden" name="id_crm" id="id_crm" value="<?php echo $fields['id_crm']; ?>">
 									<input type="hidden" name="true_price" value="">
-									<input type="hidden" name="amount" value="">
+									<input type="hidden" name="amount" value="0">
 									<input type="hidden" name="date_and_time" id="date_and_time" value="" />
+									<input type="hidden" name="post_id" id="date_and_time" value="<?php echo get_the_ID()?>" />
+									<input type="hidden" name="clientID" id="clientID" value="<?php echo $_COOKIE["_ym_uid"]; ?>">
+									<input type="hidden" name="utm_source" id="utm_source" value="<?php echo $_COOKIE["utm_source"]; ?>"/>
+									<input type="hidden" name="discount" id="discount" data-fulldiscount="0" value="100">
+									<input type="hidden" name="title" value="<?php echo get_the_title()?>">
+									<input type="hidden" name="ex_link" value="<?php echo get_page_link(); ?>">
+									<input type="hidden" id="a1" name="adr" value="Московский вокзал, Лиговский проспект 43/45" />
+
 
 									<?php if(isset($fields["p_doshkolniki_sale"]) && !empty($fields["p_doshkolniki_sale"])) : ?>
 										<input type="hidden" name="price_childs" value="<?php echo $fields["p_doshkolniki_sale"]; ?>">
@@ -568,7 +576,7 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 								<div class="self-stretch flex-col justify-start items-start gap-6 flex">
 									<h3 class="mt-0 sm:text-[24px]">Выберите количество билетов</h3>
 
-									<div class="self-stretch flex-col justify-start items-start gap-5 flex">
+									<div class="self-stretch flex-col justify-start items-start gap-5 flex tours-content__form-title">
 										<?php if(isset($fields["p_doshkolniki"]) && !empty($fields["p_doshkolniki"])): ?>
 											<div class="self-stretch justify-start items-start gap-8 inline-flex">
 												<div class="grow shrink basis-0 self-stretch flex-col justify-start items-start gap-5 flex">
@@ -874,19 +882,19 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 									<div class="w-full">
 										<h3 class="sm:text-[24px] sm:mt-4 sm:mb-6">Внесите свои данные и забронируйте экскурсию</h3>
 										<div class="flex justify-between flex-col md:flex-row gap-5 mb-5 w-full">
-											<label class="w-full md:w-1/3 placeholder relative">
+											<label class="fio_field w-full md:w-1/3 placeholder relative">
 												<input class="bg-[#F2F4F9] text-[#373F41] text-[14px] rounded-[6px] w-full h-10 sm:h-11  px-4 focus:outline-none placeholder-transparent" name="name" type="text" placeholder="Номер телефона*">
 												<span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#373F41] text-[14px] sm:text-[18px] transition-opacity pointer-events-none">
 															Ваше ФИО<span class="text-[#373F41]">*</span>
 														</span>
 											</label>
-											<label class="w-full md:w-1/3 placeholder relative">
+											<label class="email_field w-full md:w-1/3 placeholder relative">
 												<input class="bg-[#F2F4F9] text-[#373F41] text-[14px] rounded-[6px] w-full h-10 sm:h-11  px-4 focus:outline-none placeholder-transparent" name="mail" type="text" placeholder="Электронная почта*">
 												<span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#373F41] text-[14px] sm:text-[18px] transition-opacity pointer-events-none">
 															Электронная почта<span class="text-[#373F41]">*</span>
 														</span>
 											</label>
-											<label class="w-full md:w-1/3 placeholder relative">
+											<label class="phones_field w-full md:w-1/3 placeholder relative">
 												<input class="bg-[#F2F4F9] text-[#373F41] text-[14px] rounded-[6px] w-full h-10 sm:h-11  px-4 focus:outline-none placeholder-transparent" name="phone" type="text" placeholder="Номер телефона*">
 												<span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#373F41] text-[14px] sm:text-[18px] transition-opacity pointer-events-none">
 															Номер телефона<span class="text-[#373F41]">*</span>
@@ -908,12 +916,27 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 									<div class="self-stretch justify-between items-center flex flex-col gap-3 md:flex-row sm:pt-2">
 										<div class="flex-col justify-start items-start gap-6 inline-flex">
 											<div class="flex-col justify-start items-start gap-6 flex">
-												<label class="px-6 h-[48px] bg-white rounded-md border border-[#99a4ba] justify-start items-center gap-2.5 inline-flex overflow-hidden">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-														<path d="M2.30307 7H21.6969C21.8643 7 22 7.15095 22 7.33707V10.1202C22 10.3063 21.8643 10.4572 21.6969 10.4572C21.1587 10.4572 20.6712 10.6998 20.3185 11.0921C19.966 11.4842 19.7478 12.0265 19.7478 12.6249C19.7478 13.2235 19.966 13.7657 20.3185 14.1578C20.6712 14.55 21.1587 14.7928 21.6969 14.7928C21.8643 14.7928 22 14.9437 22 15.1298V17.9129C22 18.099 21.8643 18.25 21.6969 18.25H2.30307C2.13573 18.25 2 18.099 2 17.9129V15.1298C2 14.9437 2.13573 14.7928 2.30307 14.7928C2.8413 14.7928 3.32875 14.55 3.6814 14.1579C4.03401 13.7657 4.25218 13.2235 4.25218 12.6249C4.25218 12.0265 4.03401 11.4842 3.6814 11.0921C3.32875 10.6998 2.8413 10.4572 2.30307 10.4572C2.13573 10.4572 2 10.3063 2 10.1202V7.33707C2 7.15095 2.13573 7 2.30307 7ZM21.3939 7.67397H8.34311V11.1241C8.34311 11.3102 8.20738 11.4612 8.04004 11.4612C7.87275 11.4612 7.73696 11.3102 7.73696 11.1241V7.67397H2.60609V9.80297C3.19057 9.87995 3.71463 10.1761 4.10984 10.6154C4.57213 11.1297 4.85827 11.8403 4.85827 12.6249C4.85827 13.4095 4.57213 14.1201 4.10984 14.6344C3.71463 15.0739 3.19057 15.37 2.60609 15.4469V17.5759H7.73696V14.1258C7.73696 13.9397 7.87275 13.7887 8.04004 13.7887C8.20738 13.7887 8.34311 13.9397 8.34311 14.1258V17.5759H21.3939V15.4469C20.8095 15.37 20.2854 15.0739 19.8902 14.6343C19.4279 14.1201 19.1418 13.4095 19.1418 12.6249C19.1418 11.8403 19.4279 11.1297 19.8902 10.6154C20.2854 10.1761 20.8095 9.87995 21.3939 9.80297V7.67397Z" fill="#6B7280"/>
-													</svg>
-													<input type="text" name="promo" class="text-lg font-normal leading-normal w-[160px]" placeholder="Ввести промокод">
-												</label>
+												<div class="flex lex-col gap-1">
+													<label class="px-6 h-[48px] bg-white rounded-md border border-[#99a4ba] justify-start items-center gap-2.5 inline-flex overflow-hidden">
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+															<path d="M2.30307 7H21.6969C21.8643 7 22 7.15095 22 7.33707V10.1202C22 10.3063 21.8643 10.4572 21.6969 10.4572C21.1587 10.4572 20.6712 10.6998 20.3185 11.0921C19.966 11.4842 19.7478 12.0265 19.7478 12.6249C19.7478 13.2235 19.966 13.7657 20.3185 14.1578C20.6712 14.55 21.1587 14.7928 21.6969 14.7928C21.8643 14.7928 22 14.9437 22 15.1298V17.9129C22 18.099 21.8643 18.25 21.6969 18.25H2.30307C2.13573 18.25 2 18.099 2 17.9129V15.1298C2 14.9437 2.13573 14.7928 2.30307 14.7928C2.8413 14.7928 3.32875 14.55 3.6814 14.1579C4.03401 13.7657 4.25218 13.2235 4.25218 12.6249C4.25218 12.0265 4.03401 11.4842 3.6814 11.0921C3.32875 10.6998 2.8413 10.4572 2.30307 10.4572C2.13573 10.4572 2 10.3063 2 10.1202V7.33707C2 7.15095 2.13573 7 2.30307 7ZM21.3939 7.67397H8.34311V11.1241C8.34311 11.3102 8.20738 11.4612 8.04004 11.4612C7.87275 11.4612 7.73696 11.3102 7.73696 11.1241V7.67397H2.60609V9.80297C3.19057 9.87995 3.71463 10.1761 4.10984 10.6154C4.57213 11.1297 4.85827 11.8403 4.85827 12.6249C4.85827 13.4095 4.57213 14.1201 4.10984 14.6344C3.71463 15.0739 3.19057 15.37 2.60609 15.4469V17.5759H7.73696V14.1258C7.73696 13.9397 7.87275 13.7887 8.04004 13.7887C8.20738 13.7887 8.34311 13.9397 8.34311 14.1258V17.5759H21.3939V15.4469C20.8095 15.37 20.2854 15.0739 19.8902 14.6343C19.4279 14.1201 19.1418 13.4095 19.1418 12.6249C19.1418 11.8403 19.4279 11.1297 19.8902 10.6154C20.2854 10.1761 20.8095 9.87995 21.3939 9.80297V7.67397Z" fill="#6B7280"/>
+														</svg>
+														<input
+																id="promoCode"
+																type="text"
+																name="promo"
+																class="text-lg font-normal leading-normal w-[160px]"
+																<?php if ($_COOKIE['promoCode']): ?>
+																	value="<?php echo $_COOKIE['promoCode'];?>"
+																<?php else: ?>
+																	placeholder="Введите промокод"
+																<?php endif ?>
+														>
+													</label>
+													<span class="promo-loader"></span>
+													<span id="promo_ok"></span>
+
+												</div>
 												<div class="justify-start items-start gap-6 sm:gap-8 inline-flex">
 												<?php if (!$fields['no_advance_payment']): ?>
 
@@ -1000,13 +1023,30 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 												<!--<span class="line-through">11 900 ₽</span>-->
 												<span class="text-[#1a1a18] text-2xl font-bold leading-normal"><span class="t_price">0</span> ₽</span>
 											</div>
+											<div class="total-sale_price text-right hidden text-[#52a6b2]">
+												<span class="total-sale_price_text">Предоплата онлайн: </span>
+												<span class="total-sale_price_count"></span>
+												<span class="total-sale_price_currency"> руб.</span>
+											</div>
 											<div class="justify-start items-start gap-5 inline-flex my-6">
-												<button id="submit_buy" type="button" class="w-1/2 sm:w-auto sm:px-8 h-[40px] md-h-[44px] bg-[#52a6b2]  hover:bg-[#44909B] rounded-md shadow-[0px_2px_10px_-2px_rgba(16,24,40,0.10)] flex-col justify-center items-center gap-2.5 inline-flex overflow-hidden">
-													<span class="text-white font-medium leading-normal pointer-events-none">Оплатить билет</span>
+												<button id="submit_buy" type="button" class="w-1/2 sm:w-auto sm:px-8 h-[40px] md-h-[44px] bg-[#52a6b2]  hover:bg-[#44909B] rounded-md shadow-[0px_2px_10px_-2px_rgba(16,24,40,0.10)] flex-col justify-center items-center gap-2.5 inline-flex overflow-hidden min-w-[194px] relative">
+													<span class="btn-text text-white font-medium leading-normal pointer-events-none">Оплатить билет</span>
+													<span class="loader hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+														<svg class="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+															<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+														</svg>
+													</span>
 												</button>
 
-												<button type="button" class="w-1/2 sm:w-auto sm:px-8 h-[40px] md-h-[44px] bg-[#d6bd7f] rounded-md shadow-[0px_2px_10px_-2px_rgba(16,24,40,0.10)] flex-col justify-center items-center gap-2.5 inline-flex overflow-hidden">
-													<span class="text-white leading-normal pointer-events-none">Оставить заявку</span>
+												<button id="submit_request" type="button" class="w-1/2 sm:w-auto sm:px-8 h-[40px] md-h-[44px] bg-[#d6bd7f] rounded-md shadow-[0px_2px_10px_-2px_rgba(16,24,40,0.10)] flex-col justify-center items-center gap-2.5 inline-flex overflow-hidden min-w-[194px] relative">
+													<span class="btn-text text-white leading-normal pointer-events-none">Оставить заявку</span>
+													<span class="loader hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+														<svg class="animate-spin h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+															<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+														</svg>
+													</span>
 												</button>
 											</div>
 											<div class="max-w-[433px] md:text-right text-gray-500 text-[12px] sm:text-[14px]">

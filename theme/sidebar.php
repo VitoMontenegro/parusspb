@@ -37,7 +37,6 @@ $queryParams = $_SERVER['QUERY_STRING'] ? '?' .$_SERVER['QUERY_STRING'] : '';
 			<div class="flex gap-2 flex-wrap radio-group" id="cat_sidebar">
 				<?php foreach($cats as $cat): ?>
 					<?php
-						$current_term = get_queried_object();
 						$fieldsCat = get_fields("term_".$cat['id']);
 					?>
 					<?php if( !isset($fieldsCat['exclude']) || (isset($fieldsCat['exclude']) && !$fieldsCat['exclude'])): ?>
@@ -54,6 +53,27 @@ $queryParams = $_SERVER['QUERY_STRING'] ? '?' .$_SERVER['QUERY_STRING'] : '';
 						</div>
 					<?php endif; ?>
 				<?php endforeach; ?>
+				<?php if(is_front_page()): ?>
+					<?php $catsDop = get_nested_categories_by_main_parent(8); ?>
+					<?php foreach($catsDop as $cat): ?>
+						<?php
+						$fieldsCat = get_fields("term_".$cat['id']);
+						?>
+						<?php if( !isset($fieldsCat['exclude']) || (isset($fieldsCat['exclude']) && !$fieldsCat['exclude'])): ?>
+							<div class="flex items-center">
+								<?php if($cat['current']): ?>
+									<span  class="rounded-[6px] bg-[#52a6b2] text-white transition px-[13px] h-8 flex items-center">
+									<?php echo $cat['name'] ?>
+								</span>
+								<?php else: ?>
+									<a href="<?php echo $cat['link'] . $queryParams; ?>" class="rounded-[6px] bg-[#E6E9EC] hover:bg-[#52a6b2] hover:text-white transition px-[13px] h-8 flex items-center">
+										<?php echo $cat['name'] ?>
+									</a>
+								<?php endif; ?>
+							</div>
+						<?php endif; ?>
+					<?php endforeach; ?>
+				<?php endif; ?>
 			</div>
 		</div>
 		<form id="filter-form" class="mb-0 excursions-container pb-12 sm:pb-0" data-category-id="<?php echo $current_category->term_id; ?>">
