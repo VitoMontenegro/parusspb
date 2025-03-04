@@ -134,7 +134,7 @@ get_header();
 											</svg>
 										</div>
 
-										<div class="font-medium text-[16px] sm:text-[18px] text-[#6B7280]"><?php echo $item['item']; ?></div>
+										<div class="text_link_underline font-medium text-[16px] sm:text-[18px] text-[#6B7280]"><?php echo $item['item']; ?></div>
 									</div>
 								<?php endforeach; ?>
 

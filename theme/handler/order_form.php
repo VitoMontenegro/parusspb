@@ -69,7 +69,8 @@ if (!$excursion_date && ($_POST['phone']!='' || $_POST['mail']!='') )
 	//$to= "4933750@list.ru";
 	//$to= "development@kometatek.ru";
 	//$to= "info@parus-peterburg.ru,parus.work1@gmail.com,testdev@kometatek.ru";
-	$to= "parus.work1@gmail.com,testdev@kometatek.ru";
+	//$to= "world.julia1@gmail.com,testdev@kometatek.ru";
+	$to= "vitaliy060282@gmzil.com,testdev@kometatek.ru";
 	$excursion_name = $_POST['title']; unset($_POST['title']);
 	$excursion_date = isset($_POST['date_and_time']) ? $_POST['date_and_time'] : '';
 	unset($_POST['date']);
@@ -113,8 +114,11 @@ if (!$excursion_date && ($_POST['phone']!='' || $_POST['mail']!='') )
 	//$headers .= "Cc: testdev@kometatek.ru";
 	//$result=json_decode($result);//print_r($result);
 	/* и теперь отправим из */
-	wp_mail($to, $subject, $message, $headers);
-	if ($result['success']=mail($to, $subject, $message, $headers)) {
+	//wp_mail($to, $subject, $message, $headers);
+	wp_mail( $to, $subject, $message , "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion());
+	$res =  wp_mail( 'info@groupspb.ru', $subject, $message , "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion());
+	if ($res) {
+		$result['success']=true;
 		$result['text']='<p class="green">Спасибо. Ваше сообщение отправлено администрации сайта</p>';
 
 

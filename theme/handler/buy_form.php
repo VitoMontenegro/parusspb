@@ -265,7 +265,7 @@ function send_email_to_customer($arr,$out_summ,$cnt_tikets){
 
     /* получатели */
     //$to = "info@parus-peterburg.ru,k8573737@yandex.ru";
-    $to = "info@parus-peterburg.ru,parus.work1@gmail.com,testdev@kometatek.ru";
+    $to = "info@groupspb.ru,testdev@kometatek.ru";
     $excursion_name = $arr['title'];
     $excursion_date =  $arr['date_and_time'];
     $subject =  "Заказ экскурсий ".$excursion_date;
@@ -327,7 +327,7 @@ function send_email_to_customer($arr,$out_summ,$cnt_tikets){
     $text=implode('<br>',$message);
     if($arr['mail']){
         //mail($arr['mail'], $subject, $text, $headers);
-        wp_mail('info@parus-peterburg.ru,parus.work1@gmail.com', $subject, $text);
+        wp_mail('info@groupspb.ru', $subject, $text);
     }
     $headers .= "Bcc: testdev@kometatek.ru\r\n";
     /*if ($result->success=mail($to, $subject, $text, $headers)) $result->text='<p class="green">Спасибо. Ваше сообщение отправлено администрации сайта</p>';

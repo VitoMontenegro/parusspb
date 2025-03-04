@@ -158,7 +158,11 @@ $options = get_fields( 'option');
 		<div class="mt-12 sm:mt-[80px] flex flex-col md:flex-row gap-4 text-[#898582] text-[16px] font-normal mb-[64px]">
 			<iframe src="https://yandex.ru/sprav/widget/rating-badge/92802349227?type=rating&theme=dark" width="150" height="50" frameborder="0"></iframe>
 			<div class="flex flex-col gap-2 text-[12px] sm:text-[16px]">
-				<div class=""><!-- <a class="custom-underline" href="">Договор-оферта</a> и  --><a class="custom-underline" href="<?php echo esc_url(get_permalink(3)); ?>">Политика конфиденциальности</a></div>
+				<div class="">
+					<!-- <a class="custom-underline" href="">Договор-оферта</a> и  -->
+					<a class="link-underline me-2" href="<?php echo esc_url(get_permalink(3)); ?>">Политика конфиденциальности</a>
+					<a class="link-underline" href="<?php echo esc_url(get_permalink(19825)); ?>">Политика обработки персональных данных «Яндекс.Метрикой» </a>
+				</div>
 				<div class="">© ООО «Комфорт Сервис» – <?php echo date("Y"); ?> год. Индивидуальные и групповые экскурсии г. Санкт-Петербург</div>
 			</div>
 		</div>

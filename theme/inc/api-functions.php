@@ -602,7 +602,7 @@ function handle_reviews_form(WP_REST_Request $request) {
 	$name = sanitize_text_field($params["name"]);
 	$email = sanitize_email($params["email"]);
 	$text = sanitize_textarea_field($params["message"]);
-	$excurs = isset($params["excurs"]) ? (int)$params["excurs"] : 0;
+	$excurs = isset($params["excursObj"]) ? $params["excursObj"] : 0;
 	$gid = isset($params["gid"]) ? sanitize_text_field($params["gid"]) : '';
 
 
@@ -696,12 +696,15 @@ function handle_reviews_form(WP_REST_Request $request) {
 	$content .= "<b>Имя:</b> " . esc_html($name) . "<br/>";
 	$content .= "<b>email:</b> " . esc_html($email) ."<br/>";
 	$content .= "<b>Сообщение:</b> " . esc_html($text) ."<br/>";
+	$content .= "<b>Экскурсия:</b> " . esc_html($excurs) ."<br/>";
+	$content .= "<b>Гид:</b> " . esc_html($gid)."<br/>";
 	$content .= "<b>Ссылка на отзыв:</b> ".site_url()."/wp-admin/post.php?post=$post_id&action=edit";
 
-	wp_mail( 'vitaliy060282@gmail.com', $pagetitle, $content , "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion());
-	wp_mail( 'world.julia1@gmail.ru', $pagetitle, $content , "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion());
-	wp_mail( 'Info@groupspb.ru', $pagetitle, $content, "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion()  );
-	wp_mail( 'testdev@kometatek.ru', $pagetitle, $content, "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion()  );
+
+	wp_mail( 'vitaliy060282@gmail.com, testdev@kometatek.ru', $pagetitle, $content, "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion()  );
+	wp_mail( 'info@groupspb.ru', $pagetitle, $content , "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion());
+	/*wp_mail( 'Info@groupspb.ru', $pagetitle, $content, "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion()  );
+	*/
 
 
 

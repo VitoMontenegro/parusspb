@@ -1864,6 +1864,11 @@ function checkorderform() {
 	const validPhone = rePhone.test(phone);
 	const validMail = reMail.test(mail);
 
+	const existingErrorMsg = document.querySelector('.tours-content__form-title + .text-red');
+	if (existingErrorMsg) {
+		existingErrorMsg.remove();
+	}
+
 	document.querySelectorAll('.quantity-input').forEach(input => {
 		people_count += parseInt(input.value) || 0;
 	});
@@ -2152,7 +2157,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		document.addEventListener("click", function (event) {
 			if (userInteracted && !banner.contains(event.target)) {
+
+				localStorage.setItem("cookiesAccepted", "true");
 				banner.classList.add("hidden");
+				event.stopPropagation();
 			}
 			userInteracted = false; // Сбрасываем флаг после обработки
 		});
