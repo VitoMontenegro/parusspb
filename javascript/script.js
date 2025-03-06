@@ -2075,64 +2075,70 @@ document.addEventListener("DOMContentLoaded", () => {
 	const promoOk = document.getElementById('promo_ok');
 	let timeOut;
 
-	input.addEventListener('keyup', () => {
+	if(input) {
 
-		if (input.value) {
-			promoLoader.classList.add('active');
-			clearTimeout(timeOut);
-			timeOut = setTimeout(() => myfunc(input.value), 2000);
-			promoOk.style.display = 'none';
-		} else {
-			promoLoader.classList.remove('active');
-		}
-	});
+		input.addEventListener('keyup', () => {
 
-	input.addEventListener('keydown', () => {
-		clearTimeout(timeOut);
-	});
-
-	input.addEventListener('change', () => {
-		if (!input.value) {
-			promoLoader.classList.remove('active');
-			promoOk.style.display = 'none';
-		}
-	});
-
-	async function myfunc(value) {
-		const formData = new FormData(document.getElementById('order_form-page'));
-		formData.append('promo', value);
-
-		try {
-			const response = await fetch('/wp-content/themes/tw/theme/handler/validate_promo.php', {
-				method: 'POST',
-				body: formData
-			});
-
-			const data = await response.json();
-			promoLoader.classList.remove('active');
-
-			if (data.ok) {
-				const discount = parseInt(data.minus);
-				document.getElementById('discount').dataset.fulldiscount = discount;
-
-				const amountInput = document.querySelector('[name=amount]');
-				const newPrice = parseInt(amountInput.value) - discount;
-				amountInput.value = newPrice;
-				document.querySelector('.t_price').textContent = newPrice;
-
-				promoOk.textContent = `Промокод действителен, скидка ${discount} рублей.`;
-				promoOk.style.color = 'green';
-				promoOk.style.display = 'block';
-
-				input.readOnly = true;
-				updateSalePrice();
+			if (input.value) {
+				promoLoader.classList.add('active');
+				clearTimeout(timeOut);
+				timeOut = setTimeout(() => myfunc(input.value), 2000);
+				promoOk.style.display = 'none';
 			} else {
-				promoOk.textContent = data.msg || 'Промокод не действителен.';
-				promoOk.style.color = 'red';
-				promoOk.style.display = 'block';
+				promoLoader.classList.remove('active');
 			}
-		} catch (error) {
-			console.error('Ошибка запроса!!:', error);
+		});
+
+		input.addEventListener('keydown', () => {
+			clearTimeout(timeOut);
+		});
+
+		input.addEventListener('change', () => {
+			if (!input.value) {
+				promoLoader.classList.remove('active');
+				promoOk.style.display = 'none';
+			}
+		});
+
+	}
+	async function myfunc(value) {
+		const form = document.getElementById('order_form-page');
+		if (form) {
+			const formData = new FormData(form);
+			formData.append('promo', value);
+
+			try {
+				const response = await fetch('/wp-content/themes/tw/theme/handler/validate_promo.php', {
+					method: 'POST',
+					body: formData
+				});
+
+				const data = await response.json();
+				promoLoader.classList.remove('active');
+
+				if (data.ok) {
+					const discount = parseInt(data.minus);
+					document.getElementById('discount').dataset.fulldiscount = discount;
+
+					const amountInput = document.querySelector('[name=amount]');
+					const newPrice = parseInt(amountInput.value) - discount;
+					amountInput.value = newPrice;
+					document.querySelector('.t_price').textContent = newPrice;
+
+					promoOk.textContent = `Промокод действителен, скидка ${discount} рублей.`;
+					promoOk.style.color = 'green';
+					promoOk.style.display = 'block';
+
+					input.readOnly = true;
+					updateSalePrice();
+				} else {
+					promoOk.textContent = data.msg || 'Промокод не действителен.';
+					promoOk.style.color = 'red';
+					promoOk.style.display = 'block';
+				}
+			} catch (error) {
+				console.error('Ошибка запроса!!:', error);
+			}
 		}
 	}
 });
