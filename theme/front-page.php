@@ -24,23 +24,23 @@ get_header();
 
 
 	<!-- Блок Hero -->
-	<div class="container mx-auto mt-6 sm:mt-9">
-		<div class="rounded-[6px] pt-[42px] sm:pt-[60px] px-[25px] sm:px-[50px] lg:max-h-[420px] text-[#000000] pb-12 sm:pb-8 relative overflow-hidden">
+	<div class="container mx-auto mt-0 sm:mt-9">
+		<div class="rounded-[6px] pt-[22px] sm:pt-[60px] px-[25px] sm:px-[50px] lg:max-h-[420px] text-[#000000] pb-6 sm:pb-8 relative overflow-hidden">
 			<img class="hidden sm:block absolute left-0 right-0 bottom-0 top-0 object-cover w-full h-full" src="<?php echo get_stylesheet_directory_uri(); ?>/img/banner.jpg" alt="">
 			<img class="block sm:hidden absolute left-0 right-0 bottom-0 top-0 object-cover w-full h-full" src="<?php echo get_stylesheet_directory_uri(); ?>/img/banner_sm.jpg" alt="">
 			<div class="lg:w-[70%] max-w-[730px] flex flex-col items-start relative">
-				<h1 class="text-[25px] xs:text-[27px] font-bold sm:text-[48px] leading-[1.17] sm:leading-[1.04] mb-3 sm:mb-[18px] order-1">
+				<h1 class="text-[27px] font-bold sm:text-[48px] leading-[1.17] sm:leading-[1.04] mb-3 sm:mb-[18px] order-1">
 					Экскурсии <br>
 					по Санкт-Петербургу
 				</h1>
-				<div class="subtitle sm:mb-8 order-2 mb-6 text-[14px] sm:text-[16px] leading-[1.4] sm:leading-[1.2]">Более 50 экскурсий по Санкт-Петербургу и пригородам. Уникальное сочетание исторических и современных маршрутов, которые откроют вам город с разных сторон.
+				<div class="subtitle order-2 mb-2 sm:mb-8 text-[14px] sm:text-[16px] leading-[1.4] sm:leading-[1.2]">Более 50 экскурсий по Санкт-Петербургу и пригородам. Уникальное сочетание исторических и современных маршрутов, которые откроют вам город с разных сторон.
 					Цены на экскурсии по СПб - от 500 рублей.</div>
-				<ul class="mb-6 sm:mb-0 sm:ps-0 order-3 sm:order-5 sm:flex sm:gap-4 text-[14px] sm:text-[16px]">
+				<ul class="mb-0 sm:ps-0 order-5 sm:flex sm:gap-4 text-[14px] sm:text-[16px]">
 					<li class="relative pl-3 sm:pl-5 before:absolute before:left-0 before:content-['•'] ">Аккредитованные гиды</li>
 					<li class="relative pl-3 sm:pl-5 before:absolute before:left-0 before:content-['•']">Интересные программы</li>
 					<li class="relative pl-3 sm:pl-5 before:absolute before:left-0 before:content-['•']">Новые автобусы</li>
 				</ul>
-				<a href="#card_link" class="inline-flex h-10 sm:h-11 items-center justify-center font-medium px-[29px] sm:px-10 rounded-md bg-[#52A6B2] hover:bg-[#44909B] text-white text-[14px] lg:text-[16px] order-4 sm:mb-10">Выбрать экскурсию</a>
+				<a href="#card_link" class="inline-flex h-10 sm:h-11 items-center justify-center font-medium px-[29px] sm:px-10 rounded-md bg-[#52A6B2] hover:bg-[#44909B] text-white text-[14px] lg:text-[16px] order-4 mb-4 sm:mb-10">Выбрать экскурсию</a>
 			</div>
 			<img class="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 right-10 object-cover opacity-70" src="<?php echo get_stylesheet_directory_uri(); ?>/img/charch-big.svg" alt="">
 

@@ -44,7 +44,7 @@ get_header();
 			<?php endif; ?>
 			<div class="container">
 				<div class="flex-col justify-start items-start gap-[18px] inline-flex">
-					<h1 class="sm:text-[38px] font-bold  leading-[1.2]"><?php echo $title; ?></h1>
+					<h1 class="sm:text-[38px] font-bold"><?php echo $title; ?></h1>
 
 					<div class="self-stretch"><?php echo do_shortcode(term_description()); ?></div>
 				</div>

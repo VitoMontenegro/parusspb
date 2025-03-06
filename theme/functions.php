@@ -14,7 +14,7 @@ if ( ! defined( 'TW_VERSION' ) ) {
 	 * to create your production build, the value below will be replaced in the
 	 * generated zip file with a timestamp, converted to base 36.
 	 */
-	define( 'TW_VERSION', '0.1.33' );
+	define( 'TW_VERSION', '0.1.35' );
 }
 
 if ( ! defined( 'TW_TYPOGRAPHY_CLASSES' ) ) {

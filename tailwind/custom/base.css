@@ -23,10 +23,10 @@ h6 {
 	@apply font-bold tracking-tight;
 }
 h1 {
-	@apply text-[29px] font-bold sm:text-[48px] leading-[1.04];
+	@apply text-[25px] xs:text-[27px] font-bold sm:text-[48px] leading-[1];
 }
 h2 {
-	@apply text-[26px] leading-[1.2] lg:text-[32px] tracking-tight mt-10 mb-6;
+	@apply text-[24px] leading-[1] lg:text-[32px] tracking-tight mt-10 mb-6;
 }
 h3 {
 	@apply text-[20px] sm:text-[24px] mt-0 mb-[14px] leading-[1.2] font-bold;
@@ -41,7 +41,7 @@ h2.big-title {
 	@apply mb-3 sm:mb-1
 }
 .big-title h2 {
-	@apply text-[32px] mt-0 mb-[24px] leading-[1.2] font-bold;
+	@apply text-[24px] lg:text-[32px] mt-0 mb-[24px] leading-[1] font-bold;
 }
 .big-title ul {
 	list-style: disc;

@@ -24,18 +24,23 @@ document.addEventListener('DOMContentLoaded', () => {
 	const sidebar = document.getElementById('sidebar-menu');
 	let lastScrollY = window.scrollY;
 	if (sidebar) {
-		window.addEventListener('scroll', () => {
-			if (window.scrollY > lastScrollY) {
-				// Скролл вниз
-				sidebar.classList.remove('lg:top-[40px]');
-				sidebar.classList.add('lg:top-[-400px]');
-			} else {
-				// Скролл вверх
-				sidebar.classList.remove('lg:top-[-400px]');
-				sidebar.classList.add('lg:top-[40px]');
-			}
-			lastScrollY = window.scrollY;
-		});
+		if (window.innerHeight < 1270) { // Проверяем высоту экрана
+			window.addEventListener('scroll', () => {
+				if (window.scrollY > lastScrollY) {
+					// Скролл вниз
+					sidebar.classList.remove('lg:top-[40px]');
+					sidebar.classList.add('lg:top-[calc(100vh-1270px)]');
+				} else {
+					// Скролл вверх
+					sidebar.classList.remove('lg:top-[calc(100vh-1270px)]');
+					sidebar.classList.add('lg:top-[40px]');
+				}
+				lastScrollY = window.scrollY;
+			});
+		} else {
+			sidebar.classList.remove('lg:top-[calc(100vh-1270px)]');
+			sidebar.classList.add('lg:top-[40px]');
+		}
 	}
 	// Получаем элементы мобильного меню
 	const menuToggle = document.getElementById('menu-toggle');
@@ -1743,7 +1748,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		resultsContainer.style.position = 'absolute';
 		resultsContainer.style.backgroundColor = 'white';
 		resultsContainer.style.zIndex = '1000';
-		resultsContainer.style.top = '35px';
+		resultsContainer.style.top = '38px';
 		resultsContainer.style.width = '285px';
 		resultsContainer.style.left = '0';
 		resultsContainer.style.minWidth = '300px';
