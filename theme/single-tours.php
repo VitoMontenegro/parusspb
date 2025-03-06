@@ -147,12 +147,12 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 	<main id="main">
 		<?php get_template_part( 'template-parts/layout/breadcrumbs', 'content' ); ?>
 
-		<article class="my-4 sm:my-11">
+		<article class="my-4 sm:my-11"  itemscope itemtype="https://schema.org/Product">
 
 			<div id="posts-container" class="mb-[48px]">
 				<div class="container">
 					<header class="entry-header">
-						<h1 class="mt-2 mb-4 sm:mb-2 sm:mb-8 text-[20px] sm:text-[32px] font-bold sm:leading-9 tracking-[0.1px]"><?php the_title(); ?></h1>
+						<h1 class="mt-2 mb-4 sm:mb-2 sm:mb-8 text-[20px] sm:text-[32px] font-bold sm:leading-9 tracking-[0.1px]" itemprop="name"><?php the_title(); ?></h1>
 					</header>
 					<div class="flex flex-col lg:grid lg:grid-cols-15 gap-8 mb-7">
 						<div class="w-full lg:col-span-8 ">
@@ -162,7 +162,7 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 										<?php if(isset($fields["galery"]) && !empty($fields["galery"])): ?>
 											<?php foreach ($fields["galery"] as $image) : ?>
 											<div class="swiper-slide text-center flex justify-center items-center bg-cover rounded-md overflow-hidden relative cursor-pointer">
-												<img data-fancybox="gallery" src="<?php echo $image["url"] ?>" class="block w-full h-full object-cover" alt="<?php echo $image["title"] ?>"
+												<img itemprop="image" data-fancybox="gallery" src="<?php echo $image["url"] ?>" class="block w-full h-full object-cover" alt="<?php echo $image["title"] ?>"
 												 data-src="<?php echo $image["url"] ?>" data-caption="Павловск">
 												 <?php if($image["description"]): ?>
 													<?php if($image["caption"]): ?>
@@ -209,22 +209,22 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 						</div>
 						<div id="response" class="shadows_custom w-full lg:col-span-7 px-6 sm:px-8 py-7">
 							<div class="justify-between flex text-[14px] sm:text-[16px] items-start">
-								<div class="">
-
+								<div class=""  itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+									<meta itemprop="priceCurrency" content="RUB">
 									<?php if (get_cost($fields)['cost_sale']) : ?>
 										<div class="text-[18px] sm:text-[20px] line-through leading-[1.3] mb-2">
-											от <?php echo get_cost($fields)['cost']; ?> ₽
+											от <span itemprop="price"><?php echo get_cost($fields)['cost']; ?></span> ₽
 										</div>
 									<?php endif ?>
 									<div class="flex-col justify-start items-start gap-0.5 inline-flex text-[#52a6b2] mb-6">
 										<?php if (get_cost($fields)['cost_sale']) : ?>
 											<div class="self-stretch font-medium">ваша выгода: <?php $sale = ((int)get_cost($fields)['cost'] - (int)get_cost($fields)['cost_sale'])  ;  echo ($sale)   ; ?> ₽</div>
 											<div class="self-stretch text-[28px] font-bold ">
-												от <?php echo get_cost($fields)['cost_sale']; ?> ₽
+												от <span itemprop="price"><?php echo get_cost($fields)['cost_sale']; ?></span> ₽
 											</div>
 										<?php else: ?>
 											<div class="self-stretch text-[28px] font-bold ">
-												от <?php echo get_cost($fields)['cost']; ?> ₽
+												от <span itemprop="price"><?php echo get_cost($fields)['cost']; ?></span> ₽
 											</div>
 										<?php endif; ?>
 										<div class="text-gray-500">за человека</div>

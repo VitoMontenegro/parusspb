@@ -121,14 +121,17 @@ $options = get_fields( 'option');
 							</ul>
 						</nav>
 					</div>
-					<div class="col-span-12 lg:col-span-4 order-2 sm:order-3 text-[14px] sm:text-[16px] mt-11 sm:mt-0">
+					<div class="col-span-12 lg:col-span-4 order-2 sm:order-3 text-[14px] sm:text-[16px] mt-11 sm:mt-0"  itemscope itemtype="http://schema.org/Organization">
+						<meta itemprop="name" content="ООО «Комфорт Сервис»"> <!-- Почтовый индекс (не виден пользователю) -->
+						<link itemprop="url" href="<?php echo get_site_url() ?>">
 						<div class="font-medium mb-5  text-[#F1EFE9]">Как с нами связаться</div>
 						<ul class=" text-[#898582] ">
 							<li class="menu-item flex gap-1 items-center">
 								<svg class="min-w-[21px]" xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
 									<path d="M4.4165 5.13889C4.4165 4.37183 5.03833 3.75 5.80539 3.75H8.08264C8.38155 3.75 8.64693 3.94127 8.74145 4.22484L9.7816 7.34529C9.89088 7.67314 9.74246 8.03147 9.43336 8.18602L7.86581 8.96979C8.63126 10.6675 9.99899 12.0352 11.6967 12.8007L12.4805 11.2331C12.635 10.924 12.9934 10.7756 13.3212 10.8849L16.4417 11.9251C16.7252 12.0196 16.9165 12.285 16.9165 12.5839V14.8611C16.9165 15.6282 16.2947 16.25 15.5276 16.25H14.8332C9.0802 16.25 4.4165 11.5863 4.4165 5.83333V5.13889Z" stroke="#898582" stroke-width="1.13" stroke-linecap="round" stroke-linejoin="round"/>
 								</svg>
-								<a class="font-semibold" href="tel:<?php echo  preg_replace('/[^0-9+]/', '', $options['phone']);  ?>"><?php echo $options['phone'];?></a>
+								<a class="font-semibold" href="tel:<?php echo  preg_replace('/[^0-9+]/', '', $options['phone']);  ?>">
+									<span itemprop="telephone"><?php echo $options['phone'];?></span></a>
 							</li>
 							<li class="menu-item flex gap-1 items-center">
 								<svg class="min-w-[21px]" xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
@@ -140,9 +143,9 @@ $options = get_fields( 'option');
 								<svg class="min-w-[21px]" xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
 									<path d="M4.4165 7.222L9.89609 10.8751C10.3626 11.1861 10.9704 11.1861 11.4369 10.8751L16.9165 7.222M5.80539 14.8609H15.5276C16.2947 14.8609 16.9165 14.2391 16.9165 13.472V6.52756C16.9165 5.7605 16.2947 5.13867 15.5276 5.13867H5.80539C5.03833 5.13867 4.4165 5.7605 4.4165 6.52756V13.472C4.4165 14.2391 5.03833 14.8609 5.80539 14.8609Z" stroke="#898582" stroke-width="1.13" stroke-linecap="round" stroke-linejoin="round"/>
 								</svg>
-								<a href="mailto:<?php echo $options['email'];?>">Email: <?php echo $options['email'];?></a>
+								<a href="mailto:<?php echo $options['email'];?>">Email: <span itemprop="email"><?php echo $options['email'];?></span></a>
 							</li>
-							<li class="menu-item flex gap-1 items-start">
+							<li class="menu-item flex gap-1 items-start" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
 								<svg class="min-w-[21px]" xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
 									<path d="M14.3296 12.5888C13.673 13.2454 12.2403 14.6781 11.3746 15.5438C10.9841 15.9343 10.3527 15.9343 9.96217 15.5438C9.11103 14.6926 7.70807 13.2897 7.00723 12.5888C4.98522 10.5668 4.98522 7.28851 7.00723 5.2665C9.02923 3.2445 12.3076 3.2445 14.3296 5.2665C16.3516 7.28851 16.3516 10.5668 14.3296 12.5888Z" stroke="#898582" stroke-width="1.13" stroke-linecap="round" stroke-linejoin="round"/>
 									<path d="M12.61 8.92767C12.61 10 11.7407 10.8693 10.6684 10.8693C9.59606 10.8693 8.72677 10 8.72677 8.92767C8.72677 7.85534 9.59606 6.98604 10.6684 6.98604C11.7407 6.98604 12.61 7.85534 12.61 8.92767Z" stroke="#898582" stroke-width="1.13" stroke-linecap="round" stroke-linejoin="round"/>

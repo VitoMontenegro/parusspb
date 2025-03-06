@@ -70,7 +70,7 @@ if (!$excursion_date && ($_POST['phone']!='' || $_POST['mail']!='') )
 	//$to= "development@kometatek.ru";
 	//$to= "info@parus-peterburg.ru,parus.work1@gmail.com,testdev@kometatek.ru";
 	//$to= "world.julia1@gmail.com,testdev@kometatek.ru";
-	$to= "vitaliy060282@gmzil.com,testdev@kometatek.ru";
+	$to= "vitaliy060282@gmail.com,testdev@kometatek.ru,world.julia1@gmail.com";
 	$excursion_name = $_POST['title']; unset($_POST['title']);
 	$excursion_date = isset($_POST['date_and_time']) ? $_POST['date_and_time'] : '';
 	unset($_POST['date']);
@@ -109,7 +109,7 @@ if (!$excursion_date && ($_POST['phone']!='' || $_POST['mail']!='') )
 	$headers .= "Content-type: text/html; charset=utf-8\r\n";
 
 	/* дополнительные шапки */
-	$headers .= "From: parus-peterburg.ru<recall@parus-peterburg.ru>\r\n";
+	$headers .= "From: groupspb.ru<recall@groupspb.ru>\r\n";
 	//$headers .= "Bcc: sales2@tourline.spb.ru\r\n";
 	//$headers .= "Cc: testdev@kometatek.ru";
 	//$result=json_decode($result);//print_r($result);

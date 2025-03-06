@@ -409,9 +409,9 @@ get_header();
 						<div class="swiper_rev overflow-hidden px-[2px] pt-[2px] mb-8">
 							<div class="swiper-wrapper flex h-auto py-[10px]">
 								<?php while ( $query->have_posts() ) : $query->the_post(); $fieldsRev = get_fields();?>
-									<div class="swiper-slide rounded-[6px] shadows_custom p-6 text-[14px] sm:text-[16px]">
-										<div class="text-[14px]"><?php the_title() ?>, </div>
-										<div class="text-[14px] text-[#6B7280] mb-3">
+									<div class="swiper-slide rounded-[6px] shadows_custom p-6 text-[14px] sm:text-[16px]" itemprop="review" itemscope itemtype="https://schema.org/Review">
+										<div itemprop="author" class="text-[14px]"><?php the_title() ?>, </div>
+										<div class="text-[14px] text-[#6B7280] mb-3" itemprop="datePublished" >
 											<?php
 												if (isset($fieldsRev['date']) && !empty($fieldsRev['date'])) {
 													echo trim(strtr($fieldsRev['date'], $sub));
@@ -420,7 +420,7 @@ get_header();
 												}
 											?>
 										</div>
-										<div class="mb-3 text-[#111827] h-[118px] overflow-y-auto rev-text pe-4"><?php the_content(); ?></div>
+										<div class="mb-3 text-[#111827] h-[118px] overflow-y-auto rev-text pe-4" itemprop="reviewBody"><?php the_content(); ?></div>
 
 										<div class="mt-4 font-bold text-[#52A6B2] lines three-lines h-78px sm:h-[58px]">
 											<?php if(isset($fieldsRev['excursion_obj']) && $fieldsRev['excursion_obj']):  ?>
@@ -583,7 +583,7 @@ get_header();
 			<?php endif;?>
 
 			<div class="container">
-				<div class="grid grid-cols-12 w-full pt-[64px]">
+				<div class="grid grid-cols-12 w-full pt-[64px]" itemscope itemtype="https://schema.org/FAQPage">
 					<div class="col-span-12 lg:col-span-6 order-2 sm:order-1">
 						<h2 class="hidden sm:block mt-0">Часто задаваемые вопросы <br> туристов</h2>
 						<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/petr.svg" alt="">
@@ -605,14 +605,14 @@ get_header();
 
 					// Если записи найдены
 					if ( $query->have_posts() ) : ?>
-					<div class="entry-content col-span-12 lg:col-span-6 order-1 sm:order-2 mb-6 sm:mb-0">
+					<div class="entry-content col-span-12 lg:col-span-6 order-1 sm:order-2 mb-6 sm:mb-0" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
 						<h2 class="sm:hidden mt-0 mb-[34px]">Часто задаваемые вопросы туристов</h2>
 						<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-						<details class="details w-full relative block mb-4" name="faq">
+						<details class="details w-full relative block mb-4" name="faq" itemprop="name">
 							<summary class="details__title py-4 ps-4 lg:ps-8 pe-[60px] xs:pe-14 sm:pe-10 text-[#111827] font-bold cursor-pointer list-none leading-[24px]">
 								<?php the_title(); ?>
 							</summary>
-							<div class="details__content ps-4 sm:pe-14 lg:ps-8 pb-6 lg:pb-7 text-[#6B7280] mt-3 sm:mt-0">
+							<div itemprop="acceptedAnswer" itemscope="" itemtype="http://schema.org/Answer" class="details__content ps-4 sm:pe-14 lg:ps-8 pb-6 lg:pb-7 text-[#6B7280] mt-3 sm:mt-0">
 								<?php the_content(); ?>
 							</div>
 						</details>

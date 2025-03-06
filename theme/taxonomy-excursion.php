@@ -353,9 +353,9 @@ get_header();
 								<div class="swiper_rev overflow-hidden px-[2px] pt-[2px] mb-8">
 									<div class="swiper-wrapper flex h-auto py-[10px]">
 										<?php while ( $query->have_posts() ) : $query->the_post(); $fieldsRev = get_fields();?>
-											<div class="swiper-slide rounded-[6px] shadows_custom p-6 text-[14px] sm:text-[16px]">
+											<div class="swiper-slide rounded-[6px] shadows_custom p-6 text-[14px] sm:text-[16px]" itemprop="review" itemscope itemtype="https://schema.org/Review">
 												<div class="text-[14px]"><?php the_title() ?>, </div>
-												<div class="text-[14px] text-[#6B7280] mb-3">
+												<div class="text-[14px] text-[#6B7280] mb-3" itemprop="datePublished">
 													<?php
 														if (isset($fieldsRev['date']) && !empty($fieldsRev['date'])) {
 															echo trim(strtr($fieldsRev['date'], $sub));
@@ -364,7 +364,7 @@ get_header();
 														}
 													?>
 												</div>
-												<div class="mb-3 text-[#111827] h-[118px] overflow-y-auto rev-text pe-4"><?php the_content(); ?></div>
+												<div class="mb-3 text-[#111827] h-[118px] overflow-y-auto rev-text pe-4" itemprop="reviewBody"><?php the_content(); ?></div>
 
 												<div class="mt-4 font-bold text-[#52A6B2] lines three-lines h-78px sm:h-[58px]">
 													<?php if(isset($fieldsRev['excursion_obj']) && $fieldsRev['excursion_obj']):  ?>

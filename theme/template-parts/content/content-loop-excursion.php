@@ -193,14 +193,14 @@ if (isset($category_id)) {
 
 						?>
 						<!-- Фильтруемый контент -->
-						<div class="card flex flex-col col-span-12 md:col-span-6 bg-white rounded-2xl shadows_custom pb-6 relative" data-cost="<?php echo get_cost($fields)['cost_sale'] ?? get_cost($fields)['cost']; ?>" data-popular="<?php echo ++$count;?>">
+						<div itemscope itemtype="https://schema.org/Product" class="card flex flex-col col-span-12 md:col-span-6 bg-white rounded-2xl shadows_custom pb-6 relative" data-cost="<?php echo get_cost($fields)['cost_sale'] ?? get_cost($fields)['cost']; ?>" data-popular="<?php echo ++$count;?>">
 							<div class="relative mb-5">
 								<a href="<?php echo $link; ?>">
 									<?php if(isset($fields["galery"]) && !empty($fields["galery"])): ?>
 										<?php $image = $fields["galery"][0]["url"]; ?>
-										<img class="w-full h-[235px] object-cover rounded-t-2xl" src="<?php echo $image; ?>" alt="<?php echo get_the_title($post->ID); ?>" loading="lazy">
+										<img itemprop="image" class="w-full h-[235px] object-cover rounded-t-2xl" src="<?php echo $image; ?>" alt="<?php echo get_the_title($post->ID); ?>" loading="lazy">
 									<?php else : ?>
-										<img class="w-full h-[240px] object-cover rounded-lg bg-gray-300" src="<?php echo get_stylesheet_directory_uri(); ?>/img/woocommerce-placeholder.webp" alt="No image available">
+										<img itemprop="image" class="w-full h-[240px] object-cover rounded-lg bg-gray-300" src="<?php echo get_stylesheet_directory_uri(); ?>/img/woocommerce-placeholder.webp" alt="No image available">
 									<?php endif; ?>
 								</a>
 
@@ -241,7 +241,9 @@ if (isset($category_id)) {
 							</div>
 							<div class="px-4 sm:px-6 flex flex-col gap-5 h-full">
 								<div class="flex flex-col gap-1 flex-grow min-h-[96px]">
-									<a href="<?php echo $link ?>" class="card-title text-[18px] lg:text-[20px] font-bold leading-[1.2] three-lines"><?php echo get_the_title($post->ID); ?></a>
+									<a href="<?php echo $link ?>" class="card-title text-[18px] lg:text-[20px] font-bold leading-[1.2] three-lines">
+										<span itemprop="name"><?php echo get_the_title($post->ID); ?></span>
+									</a>
 									<div class="date flex items-center gap-2 text-[14px] sm:text-[16px]">
 										<?php if(count($uniqueArray)) : ?>
 											<div class="flex items-center gap-[2px] text-[#6B7280]">
@@ -280,18 +282,19 @@ if (isset($category_id)) {
 										<?php endif; ?>
 									</div>
 								</div>
-								<div class="flex items-center justify-between">
+								<div class="flex items-center justify-between" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+									<meta itemprop="priceCurrency" content="RUB" />
 									<div class="price flex flex-col gap-1 text-[#111827]">
 										<?php if (get_cost($fields)['cost_sale']) : ?>
 											<div class="old_price line-through">
 												от <span><?php echo get_cost($fields)['cost']; ?></span> ₽/чел.
 											</div>
 											<div class="price text-[20px] font-bold">
-												от <span><?php echo get_cost($fields)['cost_sale']; ?></span> ₽/чел.
+												от <span itemprop="price"><?php echo get_cost($fields)['cost_sale']; ?></span> ₽/чел.
 											</div>
 										<?php else: ?>
 											<div class="price text-[20px] font-bold">
-												от <span><?php echo get_cost($fields)['cost']; ?></span> ₽/чел.
+												от <span itemprop="price"><?php echo get_cost($fields)['cost']; ?></span> ₽/чел.
 											</div>
 										<?php endif ?>
 									</div>

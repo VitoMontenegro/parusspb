@@ -163,7 +163,7 @@ wp_reset_postdata();
                                                         >
                                                     <ul id="suggestions" class="absolute top-full left-0 w-full bg-white sm-shadows_custom rounded shadow max-h-52 overflow-y-auto hidden z-10 styles-scrollbar">
                                                         <?php foreach ($excurs_arr as $key => $value): ?>
-                                                            <li class="data-item px-4 py-2 hover:bg-gray-100 cursor-pointer" data-name="<?php echo $key ?>"><?php echo $value ?></li>
+                                                            <li class="suggestions data-item px-4 py-2 hover:bg-gray-100 cursor-pointer" data-name="<?php echo $key ?>"><?php echo $value ?></li>
                                                         <?php endforeach ?>
                                                     </ul>
 													<input type="hidden" name="excurs">
@@ -184,7 +184,7 @@ wp_reset_postdata();
                                                         placeholder="Экскурсовод" >
                                                     <ul id="gids" class="absolute top-full left-0 w-full bg-white sm-shadows_custom rounded shadow max-h-52 overflow-y-auto hidden z-10 styles-scrollbar">
                                                         <?php foreach ($gid as $key => $value): ?>
-                                                            <li class="data-item px-4 py-2 hover:bg-gray-100 cursor-pointer" data-name="<?php echo $value ?>"><?php echo $value ?></li>
+                                                            <li class="gids data-item px-4 py-2 hover:bg-gray-100 cursor-pointer" data-name="<?php echo $value ?>"><?php echo $value ?></li>
                                                         <?php endforeach ?>
                                                     </ul>
                                                 </label>

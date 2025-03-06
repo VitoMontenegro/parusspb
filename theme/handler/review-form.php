@@ -55,7 +55,7 @@ if ($_FILES['file']){
 }
 
 $message .= "Дата:  " . date('d/m/Y') . "<br/><br/>";
-$message .= "Ссылка на отзыв : https://parus-peterburg.ru/wp-admin/post.php?post=" . $post_id . "&action=edit<br/><br/>";
+$message .= "Ссылка на отзыв : https://groupspb.ru/wp-admin/post.php?post=" . $post_id . "&action=edit<br/><br/>";
 
 //mail($recepient, $pagetitle, $message, "Content-type: text/html; charset=\"utf-8\"\r\n From: admin@parus-peterburg.ru\r\n".'X-Mailer: PHP/' . phpversion());
 //mail('world.julia1@gmail.com', $pagetitle, $message, "Content-type: text/html; charset=\"utf-8\"\r\n From: admin@parus-peterburg.ru\r\n".'X-Mailer: PHP/' . phpversion());

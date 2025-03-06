@@ -866,7 +866,11 @@ document.addEventListener('DOMContentLoaded', () => {
 				inputField.value = item.textContent;
 
 				// Установка значения в скрытое поле
-				document.querySelector('input[name="excurs"]').value = item.getAttribute("data-name");
+
+				if (item.classList.contains('suggestions')) {
+					document.querySelector('input[name="excurs"]').value = item.getAttribute("data-name");
+				}
+
 
 				hideSuggestions(); // Скрытие списка
 			});

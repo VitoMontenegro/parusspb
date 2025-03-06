@@ -597,12 +597,14 @@ function handle_reviews_form(WP_REST_Request $request) {
 	$params = $request->get_params();
 	$files = $_FILES['file'] ?? null;
 
+
 	$recepient = 'testdev@kometatek.ru';
 	$sitename = "groupspb.ru";
 	$name = sanitize_text_field($params["name"]);
 	$email = sanitize_email($params["email"]);
 	$text = sanitize_textarea_field($params["message"]);
 	$excurs = isset($params["excursObj"]) ? $params["excursObj"] : 0;
+	$excursId = isset($params["excurs"]) ? $params["excurs"] : 0;
 	$gid = isset($params["gid"]) ? sanitize_text_field($params["gid"]) : '';
 
 
@@ -680,7 +682,7 @@ function handle_reviews_form(WP_REST_Request $request) {
 	}
 
 	// Сохранение дополнительных данных
-	update_field('field_644b06e279cc3', $excurs, $post_id);
+	update_field('field_644b06e279cc3', $excursId, $post_id);
 	update_field('field_5fad896583056', $gid, $post_id);
 	update_field('field_612cc6d2ad914', $email, $post_id);
 	update_field('field_5ea7e567e12c6',  date('Y-m-d'), $post_id);
@@ -701,7 +703,7 @@ function handle_reviews_form(WP_REST_Request $request) {
 	$content .= "<b>Ссылка на отзыв:</b> ".site_url()."/wp-admin/post.php?post=$post_id&action=edit";
 
 
-	wp_mail( 'vitaliy060282@gmail.com, testdev@kometatek.ru', $pagetitle, $content, "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion()  );
+	wp_mail( 'vitaliy060282@gmail.com, testdev@kometatek.ru,world.julia1@gmail.com', $pagetitle, $content, "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion()  );
 	wp_mail( 'info@groupspb.ru', $pagetitle, $content , "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion());
 	/*wp_mail( 'Info@groupspb.ru', $pagetitle, $content, "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion()  );
 	*/
