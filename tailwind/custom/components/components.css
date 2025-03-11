@@ -585,3 +585,6 @@ body .link-underline:hover {
 .page-template-default:not(.home) .entry-content ul.wp-block-list li {
 	margin-bottom: 10px;
 }
+.calendar-wrapper .flatpickr-day{
+	cursor: not-allowed!important;
+}

@@ -465,35 +465,20 @@ document.addEventListener('DOMContentLoaded', () => {
 				inline: true,
 				minDate: 'today',
 				dateFormat: 'Y-m-d',
-				locale: 'ru', // Указываем код языка
-				defaultDate: selectedDates, // Устанавливаем выбранные даты
-				disable: [
-					function (date) {
-						// Преобразуем текущую дату и сравниваем с каждой датой из selectedDates
-						const currentDate = date.toISOString().split('T')[0];
-						const isDefaultDate =
-							selectedDates.includes(currentDate);
-
-						// Блокируем все даты, не входящие в selectedDates и не больше/равные minDate
-						return !isDefaultDate && date < new Date();
-					},
-				],
+				locale: 'ru',
+				defaultDate: selectedDates,
+				clickOpens: false, // Запрещаем открытие по клику
+				enable: selectedDates, // Разрешаем только эти даты
 				onReady: function () {
-					// Отключаем hover-эффект на недопустимых датах
-					const calendarDays =
-						calendarElement.querySelectorAll('.flatpickr-day');
+					const calendarDays = calendarElement.querySelectorAll('.flatpickr-day');
 					calendarDays.forEach((day) => {
 						const date = day.getAttribute('aria-label');
-						if (
-							!selectedDates.includes(date) &&
-							day.classList.contains('flatpickr-disabled')
-						) {
-							day.classList.remove('selected');
+						if (selectedDates.includes(date)) {
+							day.classList.add('selected'); // Подсвечиваем дату
 						}
 					});
 				},
 				onChange: function () {
-					// Сбрасываем выбор на defaultDate
 					calendarInstance.setDate(selectedDates, false);
 				},
 			});
@@ -740,7 +725,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	//форма отзывов
 	const formContainer = document.querySelector('.reviews_form');
 	if (formContainer) {
-		//Работа с файлами
+		/*//Работа с файлами
 		const inputField = document.getElementById('inputField');
 
 		// Функция для показа всех элементов в списке
@@ -789,7 +774,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			document.querySelectorAll('.reviews_form placeholder ul').forEach((suggestionsBox) => {
 				suggestionsBox.classList.add('hidden');
 			});
-		}
+		}*/
 
 		// Инициализация логики для каждого поля и списка
 		/*document.querySelectorAll('.list-input input[name]').forEach((inputField) => {

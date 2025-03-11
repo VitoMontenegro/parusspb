@@ -29,7 +29,7 @@ get_header();
 			<img class="hidden sm:block absolute left-0 right-0 bottom-0 top-0 object-cover w-full h-full" src="<?php echo get_stylesheet_directory_uri(); ?>/img/banner.jpg" alt="">
 			<img class="block sm:hidden absolute left-0 right-0 bottom-0 top-0 object-cover w-full h-full" src="<?php echo get_stylesheet_directory_uri(); ?>/img/banner_sm.jpg" alt="">
 			<div class="lg:w-[70%] max-w-[730px] flex flex-col items-start relative">
-				<h1 class="text-[27px] font-bold sm:text-[48px] leading-[1.17] sm:leading-[1.04] mb-3 sm:mb-[18px] order-1">
+				<h1 class="text-[26px] xs:text-[27px] font-bold sm:text-[48px] leading-[1.2] sm:leading-[1.04] mb-3 sm:mb-[18px] order-1">
 					Экскурсии <br>
 					по Санкт-Петербургу
 				</h1>

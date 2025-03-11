@@ -40,9 +40,23 @@ function custom_search_excursions( $request ) {
 	if ( empty( $search_query ) ) {
 		return new WP_REST_Response( [], 200 );
 	}
+	$search_str = [];
 
-	add_filter( 'posts_where', function( $where ) use ( $search_query, $wpdb ) {
-		$where .= $wpdb->prepare(" AND {$wpdb->posts}.post_title LIKE %s", '%' . $wpdb->esc_like( $search_query ) . '%' );
+	$_s = explode(' ', $search_query);
+	foreach($_s as $item){
+		if (mb_strlen($item) > 4) {
+			if(mb_substr($item,-1) == 'ь' || mb_strtolower($item) == 'валаам')
+				$item = mb_substr($item,0,-1);
+			else
+				$item = mb_substr($item,0,-2);
+
+		}
+		$search_str[] = $item;
+	}
+	$s = implode(' ', $search_str);
+
+	add_filter( 'posts_where', function( $where ) use ( $s, $wpdb ) {
+		$where .= $wpdb->prepare(" AND {$wpdb->posts}.post_title LIKE %s", '%' . $wpdb->esc_like( $s ) . '%' );
 		return $where;
 	});
 

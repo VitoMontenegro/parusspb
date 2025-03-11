@@ -3,9 +3,23 @@ global $wpdb;
 $search_query = get_query_var('custom_id', false);
 $filter_name = 'search_by_title_only';
 
+$search_str = [];
+
+$_s = explode(' ', $search_query);
+foreach($_s as $item){
+	if (mb_strlen($item) > 4) {
+		if(mb_substr($item,-1) == 'ь' || mb_strtolower($item) == 'валаам')
+			$item = mb_substr($item,0,-1);
+		else
+			$item = mb_substr($item,0,-2);
+
+	}
+	$search_str[] = $item;
+}
+$s = implode(' ', $search_str);
 // Функция для поиска только по заголовку
-$filter_function = function($where) use ($search_query, $wpdb) {
-	$where .= $wpdb->prepare(" AND {$wpdb->posts}.post_title LIKE %s", '%' . $wpdb->esc_like($search_query) . '%');
+$filter_function = function($where) use ($s, $wpdb) {
+	$where .= $wpdb->prepare(" AND {$wpdb->posts}.post_title LIKE %s", '%' . $wpdb->esc_like($s) . '%');
 	return $where;
 };
 // Добавляем фильтр для поиска только по заголовку
@@ -17,7 +31,7 @@ add_filter('posts_where', $filter_function, 10, 2);
 			'post_type'      => 'tours',
 			'post_status'    => 'publish',
 			'posts_per_page' => -1,
-			's'               => $search_query
+			's'               => $s
 	]);
 // Удаляем фильтр после выполнения запроса
 remove_filter('posts_where', $filter_function);
@@ -211,7 +225,7 @@ remove_filter('posts_where', $filter_function);
 													<div class="item_alter">
 														<div class="p-4 calendar-wrapper" data-dates='<?php echo json_encode($datesArray) ;?>'>
 															<div class="flex justify-end relative -t-[2px]">
-																<button class="close-menu_old "  aria-expanded="true" aria-haspopup="true" data-close-on-click="true">
+																<button class="close-menu_old close-menu"  aria-expanded="true" aria-haspopup="true" data-close-on-click="true">
 																	<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
 																		<path d="M12 20L16 16M16 16L19.6667 12.3333M16 16L12 12M16 16L20 20M29 16C29 23.1797 23.1797 29 16 29C8.8203 29 3 23.1797 3 16C3 8.8203 8.8203 3 16 3C23.1797 3 29 8.8203 29 16Z" stroke="#9CA3AF" stroke-width="2.67" stroke-linecap="round" stroke-linejoin="round"/>
 																	</svg>

@@ -265,7 +265,7 @@ if (isset($category_id)) {
 													<div class="item_alter">
 														<div class="p-4 calendar-wrapper" data-dates='<?php echo json_encode($datesArray) ;?>'>
 															<div class="flex justify-end relative -t-[2px]">
-																<button class="close-menu_old "  aria-expanded="true" aria-haspopup="true" data-close-on-click="true">
+																<button class="close-menu_old close-menu"  aria-expanded="true" aria-haspopup="true" data-close-on-click="true">
 																	<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
 																		<path d="M12 20L16 16M16 16L19.6667 12.3333M16 16L12 12M16 16L20 20M29 16C29 23.1797 23.1797 29 16 29C8.8203 29 3 23.1797 3 16C3 8.8203 8.8203 3 16 3C23.1797 3 29 8.8203 29 16Z" stroke="#9CA3AF" stroke-width="2.67" stroke-linecap="round" stroke-linejoin="round"/>
 																	</svg>

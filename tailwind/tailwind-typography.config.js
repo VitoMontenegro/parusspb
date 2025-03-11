@@ -156,7 +156,7 @@ module.exports = {
 				},
 			}),
 			screens: {
-				xs: '370px',
+				xs: '365px',
 				md: '798px',
 				xl: '1283px',
 			},
