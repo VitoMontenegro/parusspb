@@ -2,7 +2,7 @@
 global $wpdb;
 $decodedProducts = get_query_var('custom_id', false);
 
-if (count($decodedProducts)) {
+if ($decodedProducts && is_array($decodedProducts) && count($decodedProducts)) {
 	// Настройка WP_Query
 	$query = new WP_Query([
 			'post_type'      => 'tours',
