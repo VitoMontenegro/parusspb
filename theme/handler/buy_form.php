@@ -297,7 +297,7 @@ function send_email_to_customer($arr,$out_summ,$cnt_tikets){
 
     $message[] =  "<br><b>Внимание!</b> Совершите оплату или предоплату в течение 15-ти минут. По истечении этого срока бронь автоматически снимется.<br>";
 
-    $message[] =  "Для дополнительной информации: <a href='tel:88001015692'>8 (800) 101-56-92</a> (бесплатно по РФ)<br><a href='tel:+79516853733'>+7 (951) 685-37-33</a> (только прием сообщений в <a href='https://api.whatsapp.com/send?phone=79516853733&amp;text=Здравствуйте.+Я+обращаюсь+с+сайта+groupspb.ru'>WhatsApp</a>, <a href='tg://resolve?domain=excursion_parus'>Telegram</a>)";
+    $message[] =  "Для дополнительной информации: <a href='tel:+78126271769'>+7 (812) 627-17-69</a>";
 
     $message[] =  '<br>При себе обязательно иметь документ удостоверяющий личность и документ подтверждающий льготу (пенсионное удостоверение или справку, НЕ паспорт и студенческий билет дневного очного обучения, справку со школу для школьников старше 15 лет).<br>
 
@@ -306,10 +306,10 @@ function send_email_to_customer($arr,$out_summ,$cnt_tikets){
 		_________________________<br>
 
 		С уважением,<br>
-		экскурсионное бюро "Парус"<br>
+		ГРУПСПБ<br>
 		<br>
-			<a href="tel:88001015692">8 (800) 101-56-92</a><br>
-			<a href="tel:+79516853733">+7 (951) 685-37-33</a><br>
+			<a href="tel:78126271769">+7 (812) 627-17-69</a><br>
+			<a href="tel:+79819178537">+7 (981) 917-85-37</a><br>
 		<br>
 			www.groupspb.ru';
 
@@ -327,7 +327,7 @@ function send_email_to_customer($arr,$out_summ,$cnt_tikets){
     $text=implode('<br>',$message);
     if($arr['mail']){
         //mail($arr['mail'], $subject, $text, $headers);
-        wp_mail('info@groupspb.ru', $subject, $text);
+        wp_mail('info@groupspb.ru', $subject, $text, "Content-type: text/html; charset=\"utf-8\"\r\n From: mail@groupspb.ru\r\n".'X-Mailer: PHP/' . phpversion());
     }
     $headers .= "Bcc: testdev@kometatek.ru\r\n";
     /*if ($result->success=mail($to, $subject, $text, $headers)) $result->text='<p class="green">Спасибо. Ваше сообщение отправлено администрации сайта</p>';
