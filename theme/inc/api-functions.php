@@ -511,7 +511,7 @@ function handle_filter_posts_request(WP_REST_Request $request) {
 						<a href="<?php echo $link; ?>" class="card-title text-[18px] lg:text-[20px] font-bold leading-[1.2] three-lines"><?php echo get_the_title($post->ID); ?></a>
 						<div class="date flex items-center gap-2 text-[14px] sm:text-[16px]">
 							<?php if(count($uniqueArray)) : ?>
-								<div class="flex items-center gap-[2px] text-[#6B7280]">
+								<div class="flex items-center gap-[5px] text-[#6B7280]">
 									<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/calendar.svg" alt="" class="object-cover">
 									<div class="">
 										<span><?php echo $uniqueArray[0]; ?></span>

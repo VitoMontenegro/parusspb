@@ -49,7 +49,7 @@ get_header();
 			</div>
 			<div class="flex flex-col">
 				<div class="container order-2 sm:order-1 mt-6 sm:mt-0">
-					<div class="self-stretch"><?php echo do_shortcode(term_description()); ?></div>
+					<div class="self-stretch leading-normal "><?php echo do_shortcode(term_description()); ?></div>
 				</div>
 
 				<div class="container mt-4 sm:mt-8 pb-8 border-b-[2px] border-[#D6BD7F] order-1 sm:order-2">

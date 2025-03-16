@@ -22,7 +22,7 @@ get_header();
                     <div class="entry-content">
                         <h1 class="mt-0 text-2xl sm:text-[32px] font-bold tracking-tight mb-[22px] sm:mb-6"><?php the_title() ; ?></h1>
                         <?php
-                        
+
                             $excurs_arr = []; // массив экскурсий [id]=>title
 
                             $args = ['post_type' => 'gid',
@@ -36,7 +36,7 @@ get_header();
                                     <div class="p-6 rounded-[14px] shadows_custom flex gap-6 flex-col">
                                         <div class="flex flex-col sm:flex-row gap-6">
                                             <div class="grow shrink basis-0">
-                                                <img src="<?php echo $fields['img'] ?>" alt="<?php the_title() ?>" class="rounded-[6px]">
+                                                <img src="<?php echo $fields['img'] ?>" alt="<?php the_title() ?>" class="rounded-[6px] h-full object-cover">
                                             </div>
                                             <div class="grow shrink basis-0">
                                                 <div class="mb-1.5 font-semibold leading-[20px]"><?php the_title() ?></div>

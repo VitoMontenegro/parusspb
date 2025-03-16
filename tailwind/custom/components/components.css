@@ -206,7 +206,13 @@ input[type="file" i]::-webkit-file-upload-button {
 .program[open] .open-arrow {
 	opacity: 1;
 }
-
+summary {
+	list-style: none;
+	display: inline-block;
+}
+summary::-webkit-details-marker {
+	display: none;
+}
 .details::after {
 	position: absolute;
 	content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNMTUgOEwxMCAxM0w1IDgiIHN0cm9rZT0iIzZCNzI4MCIgc3Ryb2tlLXdpZHRoPSIxLjY3IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+");

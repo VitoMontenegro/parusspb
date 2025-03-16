@@ -32,7 +32,7 @@ $fields = get_fields();
 				<div class="swiper swiper_five overflow-hidde">
 					<div class="swiper-wrapper flex h-auto py-0">
 						<?php foreach ($item['gallery'] as $img): ?>
-								<img data-fancybox="gallery_<?php echo $key; ?>" class="swiper-slide rounded-[4px] shadows_custom overflow-hidden relative object-cover h-[180px] cursor-pointer" src="<?php echo $img; ?>" />
+								<img data-fancybox="gallery_<?php echo $key; ?>" class="swiper-slide rounded-[4px] shadows_custom overflow-hidden relative object-cover h-[250px] sm:h-[180px] cursor-pointer" src="<?php echo $img; ?>" />
 						<?php endforeach; ?>
 					</div>
 				</div>

@@ -246,7 +246,7 @@ if (isset($category_id)) {
 									</a>
 									<div class="date flex items-center gap-2 text-[14px] sm:text-[16px]">
 										<?php if(count($uniqueArray)) : ?>
-											<div class="flex items-center gap-[2px] text-[#6B7280]">
+											<div class="flex items-center gap-[5px] text-[#6B7280]">
 												<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
 													<path d="M6 4.75V1.75M12 4.75V1.75M5.25 7.75H12.75M3.75 15.25H14.25C15.0784 15.25 15.75 14.5784 15.75 13.75V4.75C15.75 3.92157 15.0784 3.25 14.25 3.25H3.75C2.92157 3.25 2.25 3.92157 2.25 4.75V13.75C2.25 14.5784 2.92157 15.25 3.75 15.25Z" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 												</svg>

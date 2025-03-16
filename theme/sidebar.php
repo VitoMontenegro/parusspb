@@ -32,7 +32,7 @@ $queryParams = $_SERVER['QUERY_STRING'] ? '?' .$_SERVER['QUERY_STRING'] : '';
 			<input type="text" placeholder="Что вы ищете?" name="s" class="md:max-w-[113px]">
 		</form>
 		<!--catName-->
-		<?php $cats = get_nested_categories_by_main_parent($current_category->term_id); ?>
+		<?php $cats = get_nested_categories_by_main_parent(2); ?>
 		<div class="flex gap-1 flex-col w-full pb-[20px] mb-[24px] border-b-2 border-[#E5E7EB]">
 			<div class="flex gap-2 flex-wrap radio-group" id="cat_sidebar">
 				<?php foreach($cats as $cat): ?>
@@ -53,8 +53,28 @@ $queryParams = $_SERVER['QUERY_STRING'] ? '?' .$_SERVER['QUERY_STRING'] : '';
 						</div>
 					<?php endif; ?>
 				<?php endforeach; ?>
-				<?php if(is_front_page()): ?>
-					<?php $catsDop = get_nested_categories_by_main_parent(8); ?>
+
+				<?php $catsDop = get_nested_categories_by_main_parent(8); ?>
+				<?php foreach($catsDop as $cat): ?>
+					<?php
+					$fieldsCat = get_fields("term_".$cat['id']);
+					?>
+					<?php if( !isset($fieldsCat['exclude']) || (isset($fieldsCat['exclude']) && !$fieldsCat['exclude'])): ?>
+						<div class="flex items-center">
+							<?php if($cat['current']): ?>
+								<span  class="rounded-[6px] bg-[#52a6b2] text-white transition px-[13px] h-8 flex items-center">
+								<?php echo $cat['name'] ?>
+							</span>
+							<?php else: ?>
+								<a href="<?php echo $cat['link'] . $queryParams; ?>" class="rounded-[6px] bg-[#E6E9EC] hover:bg-[#52a6b2] hover:text-white transition px-[13px] h-8 flex items-center">
+									<?php echo $cat['name'] ?>
+								</a>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
+				<?php endforeach; ?>
+				<?php if(get_top_parent_category($current_category->term_id)->term_id === 16): ?>
+					<?php $catsDop = get_nested_categories_by_main_parent(16); ?>
 					<?php foreach($catsDop as $cat): ?>
 						<?php
 						$fieldsCat = get_fields("term_".$cat['id']);
@@ -63,8 +83,8 @@ $queryParams = $_SERVER['QUERY_STRING'] ? '?' .$_SERVER['QUERY_STRING'] : '';
 							<div class="flex items-center">
 								<?php if($cat['current']): ?>
 									<span  class="rounded-[6px] bg-[#52a6b2] text-white transition px-[13px] h-8 flex items-center">
-									<?php echo $cat['name'] ?>
-								</span>
+								<?php echo $cat['name'] ?>
+							</span>
 								<?php else: ?>
 									<a href="<?php echo $cat['link'] . $queryParams; ?>" class="rounded-[6px] bg-[#E6E9EC] hover:bg-[#52a6b2] hover:text-white transition px-[13px] h-8 flex items-center">
 										<?php echo $cat['name'] ?>

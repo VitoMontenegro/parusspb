@@ -378,17 +378,43 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 
 
 							<div class="cost_block mt-4 sm:mt-12 pt-6">
-									<?php if(isset($fields['video_after_gates_dzen']) && !empty($fields['video_after_gates_dzen'])): ?>
+									<?php if(isset($fields['video_after_gates_dzen']) && !empty($fields['video_after_gates_dzen']) || ( isset($fields['video_after_gates']) && !empty($fields['video_after_gates']))): ?>
 										<h2 class="sm:mb-8 mt-0">Как проходит экскурсия</h2>
 									<?php endif; ?>
 								<div class="justify-start items-start gap-8 md:gap-[54px] flex flex-col md:flex-row sm:border-b pb-[32px] sm:pb-[50px] w-full">
-
 									<?php if(isset($fields['video_after_gates_dzen']) && !empty($fields['video_after_gates_dzen'])): ?>
+										<?php $previewImage = $fields['video_after_gates_dzen_img'] ??   get_stylesheet_directory_uri() . "/img/woocommerce-placeholder.webp"; ?>
+										<div class="w-full md:w-[60%] h-[440px] px-[77px] py-11  rounded justify-center items-center gap-2.5 flex object-cover cursor-pointer" style="background: url(<?php echo $previewImage; ?>)" data-src="<?php echo getDzenEmbedUrl($fields['video_after_gates_dzen']); ?>"  data-fancybox="vidieo" data-type="iframe">
+											<div class="w-16 h-16 relative  overflow-hidden">
+												<div class="w-12 h-12 left-[8px] top-[8px] absolute">
+													<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+														<circle cx="32" cy="32" r="24" fill="#D6BD7F"/>
+														<path d="M25.333 43.3901V20.6098C25.333 19.7965 26.2524 19.3234 26.9142 19.7961L42.8604 31.1863C43.4188 31.5851 43.4188 32.4149 42.8604 32.8137L26.9142 44.2039C26.2524 44.6766 25.333 44.2035 25.333 43.3901Z" fill="white"/>
+													</svg>
+												</div>
+											</div>
+										</div>
+									<?php endif; ?>
+									<?php if(isset($fields['video_after_gates']) && !empty($fields['video_after_gates'])): ?>
+										<?php
+										$iframeHtml = $fields['video_after_gates'];
+										$videoParams = getVkVideoParams($iframeHtml);
+
+										if ($videoParams) {
+											$oid = $videoParams['oid'];
+											$id  = $videoParams['id'];
+										}
+
+										$embedUrl = "https://vk.com/video_ext.php?oid={$oid}&id={$id}&hd=2&autoplay=1"; ?>
 
 										<?php $previewImage = $fields['video_after_gates_dzen_img'] ??   get_stylesheet_directory_uri() . "/img/woocommerce-placeholder.webp"; ?>
 
-										<div class="w-full md:w-[60%] h-[440px] px-[77px] py-11  rounded justify-center items-center gap-2.5 flex object-cover cursor-pointer" style="background: url(<?php echo $previewImage; ?>)" data-src="<?php echo getDzenEmbedUrl($fields['video_after_gates_dzen']); ?>"  data-fancybox="vidieo" data-type="iframe">
-											<div class="w-16 h-16 relative  overflow-hidden">
+										<div class="w-full md:w-[60%] h-[440px] px-[77px] py-11 rounded justify-center items-center gap-2.5 flex object-cover cursor-pointer"
+											 style="background: url(<?php echo $previewImage; ?>) center center / cover no-repeat"
+											 data-src="<?php echo $embedUrl; ?>"
+											 data-fancybox="vidieo"
+											 data-type="iframe">
+											<div class="w-16 h-16 relative overflow-hidden">
 												<div class="w-12 h-12 left-[8px] top-[8px] absolute">
 													<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
 														<circle cx="32" cy="32" r="24" fill="#D6BD7F"/>
@@ -1371,7 +1397,7 @@ $start_time = (isset($fields['start_time']) &&!empty($fields['start_time']))  ? 
 																<a href="<?php echo get_permalink($post->ID); ?>" class="card-title text-[18px] lg:text-[20px] font-bold leading-[1.2] three-lines"><?php echo get_the_title($post->ID); ?></a>
 																<div class="date flex items-center gap-2 text-[14px] sm:text-[16px]">
 																	<?php if(count($uniqueArray)) : ?>
-																		<div class="flex items-center gap-[2px] text-[#6B7280]">
+																		<div class="flex items-center gap-[5px] text-[#6B7280]">
 																			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
 																				<path d="M6 4.75V1.75M12 4.75V1.75M5.25 7.75H12.75M3.75 15.25H14.25C15.0784 15.25 15.75 14.5784 15.75 13.75V4.75C15.75 3.92157 15.0784 3.25 14.25 3.25H3.75C2.92157 3.25 2.25 3.92157 2.25 4.75V13.75C2.25 14.5784 2.92157 15.25 3.75 15.25Z" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 																			</svg>

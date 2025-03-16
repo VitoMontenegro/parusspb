@@ -271,8 +271,11 @@ if ($menu_items) {
 			<a target="_blank" href=https://api.whatsapp.com/send?phone=<?php echo preg_replace('/[^0-9]/', '', $options['watsapp']);  ?>&text=Здравствуйте.+Я+обращаюсь+с+сайта+groupspb.ru" class="watsapp">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/whatsapp.svg" alt="" class="object-contain w-8 h-8">
 			</a>
-			<a target="_blank" href="tg://resolve?domain=<?php echo $options['telegram'];  ?>" class="me-2 sm:me-3">
+			<a target="_blank" href="tg://resolve?domain=<?php echo $options['telegram'];  ?>" class="">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/telegram.svg" alt="" class="object-contain  w-8 h-8">
+			</a>
+			<a target="_blank" href="https://vk.com/<?php echo $options['vk'];  ?>" class="me-2 sm:me-3">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/vk.svg" alt="" class="object-contain  w-8 h-8">
 			</a>
 		</div>
 		<iframe src="https://yandex.ru/sprav/widget/rating-badge/92802349227?type=rating" width="150" height="50" frameborder="0"></iframe>

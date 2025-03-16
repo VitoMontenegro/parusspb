@@ -656,6 +656,19 @@ function getNumEnding($number, $endingArray) {
 	return $ending;
 }
 
+function getVkVideoParams($iframe) {
+	preg_match('/src="([^"]+)"/', $iframe, $srcMatch);
+	if (!isset($srcMatch[1])) return null;
+
+	$url = $srcMatch[1];
+	parse_str(parse_url($url, PHP_URL_QUERY), $params);
+
+	return [
+			'oid' => $params['oid'] ?? null,
+			'id'  => $params['id'] ?? null
+	];
+}
+
 function remove_all_acf_meta_boxes() {
 	?>
 	<script type="text/javascript">
